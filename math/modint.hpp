@@ -1,6 +1,7 @@
 #ifndef MODINT_HPP
 #define MODINT_HPP
 
+#include "binary_exponentiation.hpp"
 #include <cassert>
 #include <vector>
 
@@ -13,7 +14,7 @@ class ModInt
 
   public:
     static const int                MOD = M;
-    static inline std::vector<mint> inv{};
+    inline static std::vector<mint> inv{};
 
     ModInt(ll x) : x(x) {}
     ModInt() : x(0) {}
