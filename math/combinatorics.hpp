@@ -2,34 +2,10 @@
 #define COMBINATORICS_HPP
 
 #include "modint.hpp"
+#include <array>
 #include <cassert>
+#include <iostream>
 #include <vector>
-
-template <int MOD>
-std::vector<ModInt<MOD>> factorials(int len)
-{
-    assert(len > 0);
-    std::vector<ModInt<MOD>> ans(len);
-    ans[0] = 1;
-    for (int i = 1; i < len; i++)
-        ans[i] = ans[i - 1] * i;
-    return ans;
-}
-
-template <int MOD>
-std::vector<ModInt<MOD>> inverse_factorials(int len)
-{
-    using mint = ModInt<MOD>;
-    assert(len > 0);
-
-    mint::precompute_inverses(len);
-    std::vector<mint> inv_fact(len);
-
-    inv_fact[0] = 1;
-    for (int i = 1; i < len; i++)
-        inv_fact[i] = inv_fact[i - 1] * mint::inverse(i);
-    return inv_fact;
-}
 
 template <int NMAX, int MOD>
 struct Combinations
@@ -37,15 +13,23 @@ struct Combinations
     using mint = ModInt<MOD>;
     std::vector<mint> fact, inv_fact;
 
-    Combinations(void)
+    Combinations(void) { precompute(NMAX + 1); }
+
+    void precompute(int len)
     {
-        fact     = factorials<MOD>(NMAX + 1);
-        inv_fact = inverse_factorials<MOD>(NMAX + 1);
+        mint::precompute_inverses(len);
+        fact.resize(len), inv_fact.resize(len);
+        inv_fact[0] = fact[0] = 1;
+        for (int i = 1; i < len; i++)
+        {
+            inv_fact[i] = inv_fact[i - 1] * mint::inverse(i);
+            fact[i]     = fact[i - 1] * i;
+        }
     }
 
     mint C(int n, int k) const
     {
-        assert(n < NMAX);
+        assert(fact.size() > n);
         if (k > n or k < 0)
             return 0;
         return fact[n] * inv_fact[k] * inv_fact[n - k];
