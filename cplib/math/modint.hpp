@@ -1,8 +1,8 @@
-#ifndef MODINT_HPP
-#define MODINT_HPP
+#ifndef CPLIB_MODINT_HPP
+#define CPLIB_MODINT_HPP
 
-#include "binary_exponentiation.hpp"
 #include <cassert>
+#include <cplib/math/binary_exponentiation.hpp>
 #include <vector>
 
 template <int M>
@@ -13,8 +13,8 @@ class ModInt
     ll x;
 
   public:
-    static const int         MOD = M;
-    static std::vector<mint> inv;
+    static const int                MOD = M;
+    inline static std::vector<mint> inv{0, 1};
 
     ModInt(ll x) : x(x) {}
     ModInt() : x(0) {}
@@ -66,7 +66,4 @@ class ModInt
     }
 };
 
-template <int MOD>
-std::vector<ModInt<MOD>> ModInt<MOD>::inv{0, 1};
-
-#endif
+#endif // CPLIB_MODINT_HPP

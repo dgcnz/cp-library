@@ -1,8 +1,8 @@
-#ifndef REV_RANGE_HPP
-#define REV_RANGE_HPP
+#ifndef CPLIB_REV_RANGE_HPP
+#define CPLIB_REV_RANGE_HPP
 
-#include "reverse_number_iterator.hpp"
 #include <cassert>
+#include <cplib/utils/reverse_number_iterator.hpp>
 
 template <typename T = int>
 class rev_range
@@ -19,4 +19,4 @@ class rev_range
     iterator end() { return iterator(r); }
 };
 
-#endif
+#endif // CPLIB_REV_RANGE_HPP

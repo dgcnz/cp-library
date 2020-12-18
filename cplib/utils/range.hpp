@@ -1,8 +1,8 @@
-#ifndef RANGE_HPP
-#define RANGE_HPP
+#ifndef CPLIB_RANGE_HPP
+#define CPLIB_RANGE_HPP
 
-#include "number_iterator.hpp"
 #include <cassert>
+#include <cplib/utils/number_iterator.hpp>
 
 template <typename T = int>
 class range
@@ -20,4 +20,4 @@ class range
     iterator end() { return iterator(r); }
 };
 
-#endif
+#endif // CPLIB_RANGE_HPP

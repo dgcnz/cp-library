@@ -1,3 +1,6 @@
+#ifndef CPLIB_BINARY_EXPONENTIATION_HPP
+#define CPLIB_BINARY_EXPONENTIATION_HPP
+
 template <typename T1, typename T2>
 T1 binpow(T1 base, T2 exp)
 {
@@ -11,3 +14,5 @@ T1 binpow(T1 base, T2 exp)
     }
     return ans;
 }
+
+#endif // CPLIB_BINARY_EXPONENTIATION_HPP

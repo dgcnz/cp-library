@@ -1,5 +1,5 @@
-#ifndef NUMBER_ITERATOR_HPP
-#define NUMBER_ITERATOR_HPP
+#ifndef CPLIB_NUMBER_ITERATOR_HPP
+#define CPLIB_NUMBER_ITERATOR_HPP
 
 #include <iterator>
 
@@ -51,4 +51,4 @@ class NumberIterator
     bool operator!=(const self &rhs) const { return !(*this == rhs.n); }
 };
 
-#endif
+#endif // CPLIB_NUMBER_ITERATOR_HPP

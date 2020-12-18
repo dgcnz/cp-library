@@ -1,10 +1,8 @@
-#ifndef COMBINATORICS_HPP
-#define COMBINATORICS_HPP
+#ifndef CPLIB_COMBINATORICS_HPP
+#define CPLIB_COMBINATORICS_HPP
 
-#include "modint.hpp"
-#include <array>
 #include <cassert>
-#include <iostream>
+#include <cplib/math/modint.hpp>
 #include <vector>
 
 template <int NMAX, int MOD>
@@ -48,4 +46,4 @@ struct Combinations
     }
 };
 
-#endif
+#endif // CPLIB_COMBINATORICS_HPP

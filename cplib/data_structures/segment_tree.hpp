@@ -1,10 +1,10 @@
-#ifndef SEGMENT_TREE_HPP
-#define SEGMENT_TREE_HPP
+#ifndef CPLIB_SEGMENT_TREE_HPP
+#define CPLIB_SEGMENT_TREE_HPP
 
 #include <functional>
 #include <vector>
 
-template <class T>
+template <typename T>
 struct SegmentTree
 {
     using BinaryOperator = std::function<T(T, T)>;
@@ -74,4 +74,4 @@ struct SegmentTree
     }
 };
 
-#endif /* SEGMENT_TREE_HPP */
+#endif // CPLIB_SEGMENT_TREE_HPP

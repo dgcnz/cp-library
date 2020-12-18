@@ -1,7 +1,7 @@
-#ifndef REVERSE_NUMBER_ITERATOR_HPP
-#define REVERSE_NUMBER_ITERATOR_HPP
+#ifndef CPLIB_REVERSE_NUMBER_ITERATOR_HPP
+#define CPLIB_REVERSE_NUMBER_ITERATOR_HPP
 
-#include "number_iterator.hpp"
+#include <cplib/utils/number_iterator.hpp>
 
 template <typename T>
 class ReverseNumberIterator : public NumberIterator<T>
@@ -18,4 +18,4 @@ class ReverseNumberIterator : public NumberIterator<T>
     self &operator--() { return this->operator++(); }
 };
 
-#endif
+#endif // CPLIB_REVERSE_NUMBER_ITERATOR_HPP
