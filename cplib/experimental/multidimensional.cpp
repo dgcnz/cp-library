@@ -96,10 +96,10 @@ T accumulate(InputIterator   first,
 int main(void)
 {
     using namespace std;
-    multidimensional_vector<int, 2>::type v;
+    multidimensional_vector<int, 3>::type v;
 
-    resize<int, 2>(v, 3, 2);
-    fill<int, 2>(begin(v), end(v), 3);
+    resize<int, 3>(v, 2, 2, 2);
+    fill<int, 3>(begin(v), end(v), 3);
     // or instead: assign<int, 2>(v, 3, 3, 2)
 
     // Results in 3 x 2 vector filled with 3's:
@@ -107,11 +107,11 @@ int main(void)
     // 3 3
     // 3 3
 
-    for_each<2>(begin(v), end(v), [](int x) { cout << x << " "; }),
-        cout << endl;
+    // for_each<2>(begin(v), end(v), [](int x) { cout << x << " "; }),
+    //     cout << endl;
     // 3 3 3 3 3 3
 
-    cout << accumulate<2>(begin(v), end(v), 0, plus<int>()) << endl;
+    cout << accumulate<3>(begin(v), end(v), 0, plus<int>()) << endl;
     // 6
 
     return 0;

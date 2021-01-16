@@ -1,40 +1,32 @@
 #ifndef CPLIB_SIEVE_HPP
 #define CPLIB_SIEVE_HPP
 
+#include <bitset>
 #include <cassert>
 #include <vector>
 
+template <int SIZE>
 struct Sieve
 {
+    static_assert(0 <= SIZE and SIZE <= 1e8, "0 <= SIZE <= 1e8");
     using byte = unsigned char;
-    using ll   = long long;
-    std::vector<byte> is_prime{0, 0, 1};
+    std::bitset<SIZE> is_prime;
+    std::vector<int>  primes;
 
-    Sieve() {}
-
-    void precompute(int n) // upperbound inclusive
+    Sieve()
     {
-        assert(n > 3 and n < 1e8);
-        if (n < (int)is_prime.size())
-            return;
-        is_prime.resize(n + 1, true);
-
-        for (int i = 2; i * i <= n; ++i)
+        is_prime.set();
+        is_prime[0] = is_prime[1] = 0;
+        for (int i = 4; i < SIZE; i += 2)
+            is_prime[i] = 0;
+        for (int i = 3; i * i < SIZE; i += 2)
             if (is_prime[i])
-                for (int j = i * i; j <= n; j += i)
-                    is_prime[j] = false;
-    }
+                for (int j = i * i; j < SIZE; j += i * 2)
+                    is_prime[j] = 0;
 
-    std::vector<int> get_primes(int n)
-    {
-        assert(n < int(is_prime.size()));
-        if (n < 2)
-            return {};
-        std::vector<int> primes = {2};
-        for (int i = 3; i <= n; i += 2)
+        for (int i = 2; i < SIZE; ++i)
             if (is_prime[i])
                 primes.push_back(i);
-        return primes;
     }
 };
 
