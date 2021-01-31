@@ -96,7 +96,7 @@ struct HLD
     S query(int a, int b)
     {
         /*
-         * Query range [a, b].
+         * Query path a to b
          *
          * The path from a to b can be decomposed to a -> lca(a, b) + b ->
          * lca(a, b). This query implementation will force the deepest node to
