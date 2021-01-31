@@ -2,7 +2,7 @@
 #define CPLIB_MODINT_HPP
 
 #include <cassert>
-#include <cplib/math/binary_exponentiation.hpp>
+#include <cplib/math/binary_exponentiation>
 #include <vector>
 
 template <int M>
@@ -14,14 +14,17 @@ class ModInt
 
   public:
     static const int                MOD = M;
-    inline static std::vector<mint> inv{0, 1};
+    inline static std::vector<mint> inverse{0, 1};
 
     ModInt(ll x) : x(x) {}
     ModInt() : x(0) {}
-    ModInt(mint const &y) : x(y.v()) {}
-    explicit  operator ll() const { return v(); }
-    ll        v(void) const { return mint::v(x); }
-    static ll v(ll x)
+    ModInt(mint const &y) : x(y.val()) {}
+    explicit  operator ll() const { return val(); }
+    explicit  operator int() const { return val(); }
+    ll        val(void) const { return mint::val(x); }
+    int       mod() const { return MOD; }
+    mint      pow(ll n) const { return binpow(val(), n); }
+    static ll val(ll x)
     {
         if (x < 0)
             return x + M;
@@ -29,39 +32,39 @@ class ModInt
     }
     mint &operator=(mint const &y)
     {
-        x = y.v();
+        x = y.val();
         return *this;
     }
     mint &operator=(ll const &y) { return operator=(mint(y)); }
     mint &operator+=(mint const &y) { return operator=(operator+(y)); }
     mint &operator-=(mint const &y) { return operator=(operator-(y)); }
     mint &operator*=(mint const &y) { return operator=(operator*(y)); }
-    mint  operator+(mint const &y) const { return mint::v(v() + y.v()); }
+    mint  operator+(mint const &y) const { return mint::val(val() + y.val()); }
     mint  operator+(ll const &y) const { return operator+(mint(y)); }
-    mint  operator-(mint const &y) const { return mint::v(v() - y.v()); }
+    mint  operator-(mint const &y) const { return mint::val(val() - y.val()); }
     mint  operator-(ll const &y) const { return operator-(mint(y)); }
-    mint  operator*(mint const &y) const { return mint::v(v() * y.v()); }
+    mint  operator*(mint const &y) const { return mint::val(val() * y.val()); }
     mint  operator*(ll const &y) const { return operator*(mint(y)); }
-    mint  operator/(mint const &y) const { return operator*(y.inverse()); }
-    mint  operator/(ll const &y) const { return operator*(mint::inverse(y)); }
+    mint  operator/(mint const &y) const { return operator*(y.inv()); }
+    mint  operator/(ll const &y) const { return operator*(mint::inv(y)); }
 
     static void precompute_inverses(int len)
     {
         assert(len < 1e8 and len > 0);
-        int plen = inv.size();
+        int plen = inverse.size();
         if (len > plen)
         {
-            inv.resize(len);
+            inverse.resize(len);
             for (int i = plen; i < len; ++i)
-                inv[i] = MOD - ll(inv[MOD % i] * (MOD / i));
+                inverse[i] = MOD - ll(inverse[MOD % i] * (MOD / i));
         }
     }
-    mint        inverse(void) const { return mint::inverse(v()); }
-    static mint inverse(ll x)
+    mint        inv(void) const { return mint::inv(val()); }
+    static mint inv(ll x)
     {
         assert(x > 0);
-        if (x < ll(inv.size()))
-            return inv[x];
+        if (x < ll(inverse.size()))
+            return inverse[x];
         return binpow(mint(x), MOD - 2);
     }
 };
