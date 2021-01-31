@@ -1,18 +1,28 @@
+#ifndef CPLIB_LCA_HPP
+#define CPLIB_LCA_HPP
+
+#include <cmath>
+#include <vector>
+
+using namespace std;
 
 struct LCA
 {
-    using vi   = vector<int>;
-    using Tree = vector<vi>;
+    using Tree = vector<vector<int>>;
 
-    int        n;
-    vector<vi> up;
-    vi         tin, tout;
+    Tree                g;
+    vector<vector<int>> up;
+    vector<int>         tin, tout;
 
-    LCA(const Tree &g) : n(g.size()), up(n, vi(log2(n) + 2)), tin(n), tout(n)
+    LCA(int n) : g(n), up(n, vector<int>(log2(n) + 2)), tin(n), tout(n) {}
+
+    void operator()(void)
     {
         int timer = 0;
         preprocess(g, 0, 0, timer);
     }
+
+    void add_edge(int u, int v) { g[u].push_back(v), g[v].push_back(u); }
 
     void preprocess(const Tree &g, int u, int p, int &timer)
     {
@@ -59,3 +69,5 @@ struct LCA
         return up[u][0];
     }
 };
+
+#endif // CPLIB_LCA_HPP

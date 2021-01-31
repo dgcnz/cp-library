@@ -1,3 +1,15 @@
+#ifndef CPLIB_DIJKSTRA_HPP
+#define CPLIB_DIJKSTRA_HPP
+
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <set>
+#include <utility>
+#include <vector>
+
+using namespace std;
+
 template <typename T>
 struct Dijkstra
 {
@@ -104,3 +116,5 @@ struct Dijkstra
             run_sparse(src);
     }
 };
+
+#endif // CPLIB_DIJKSTRA_HPP

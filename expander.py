@@ -13,12 +13,8 @@ logger = getLogger(__name__)  # type: Logger
 
 
 class Expander:
-
-    atcoder_include = re.compile(
-        r'#include\s*["<](atcoder/[a-z_]*(|.hpp))[">]\s*|#include\s*["<](cplib/[a-z_]*/[a-z_]*(|.hpp))[">]\s*')
-
-    # include_guard = re.compile(r'#.*ATCODER_[A-Z_]*_HPP')
-    include_guard = re.compile(r'#.*ATCODER_[A-Z_]*_HPP|#.*CPLIB_[A-Z_]*_HPP')
+    cplib_include = re.compile(r'#include\s*["<](cplib/.*(|.hpp))[">]\s*')
+    include_guard = re.compile(r'#.*CPLIB_.*_HPP')
 
     def is_ignored_line(self, line) -> bool:
         if self.include_guard.match(line):
@@ -34,32 +30,32 @@ class Expander:
 
     included = set()  # type: Set[Path]
 
-    def find_acl(self, acl_name: str) -> Path:
+    def find_cpl(self, cpl_name: str) -> Path:
         for lib_path in self.lib_paths:
-            path = lib_path / acl_name
+            path = lib_path / cpl_name
             if path.exists():
                 return path
-        logger.error('cannot find: {}'.format(acl_name))
+        logger.error('cannot find: {}'.format(cpl_name))
         raise FileNotFoundError()
 
-    def expand_acl(self, acl_file_path: Path) -> List[str]:
-        if acl_file_path in self.included:
-            logger.info('already included: {}'.format(acl_file_path.name))
+    def expand_cpl(self, cpl_file_path: Path) -> List[str]:
+        if cpl_file_path in self.included:
+            logger.info('already included: {}'.format(cpl_file_path.name))
             return []
-        self.included.add(acl_file_path)
-        logger.info('include: {}'.format(acl_file_path.name))
+        self.included.add(cpl_file_path)
+        logger.info('include: {}'.format(cpl_file_path.name))
 
-        acl_source = open(str(acl_file_path)).read()
+        cpl_source = open(str(cpl_file_path)).read()
 
         result = []  # type: List[str]
-        for line in acl_source.splitlines():
+        for line in cpl_source.splitlines():
             if self.is_ignored_line(line):
                 continue
 
-            m = self.atcoder_include.match(line)
+            m = self.cplib_include.match(line)
             if m:
                 name = m.group(1)
-                result.extend(self.expand_acl(self.find_acl(name)))
+                result.extend(self.expand_cpl(self.find_cpl(name)))
                 continue
 
             result.append(line)
@@ -69,10 +65,10 @@ class Expander:
         self.included = set()
         result = []  # type: List[str]
         for line in source.splitlines():
-            m = self.atcoder_include.match(line)
+            m = self.cplib_include.match(line)
             if m:
-                acl_path = self.find_acl(m.group(1))
-                result.extend(self.expand_acl(acl_path))
+                cpl_path = self.find_cpl(m.group(1))
+                result.extend(self.expand_cpl(cpl_path))
                 continue
 
             result.append(line)
@@ -89,7 +85,7 @@ if __name__ == "__main__":
     parser.add_argument('source', help='Source File')
     parser.add_argument('-c', '--console',
                         action='store_true', help='Print to Console')
-    parser.add_argument('--lib', help='Path to Atcoder Library')
+    parser.add_argument('--lib', help='Path to CP Library')
     opts = parser.parse_args()
 
     lib_paths = []
