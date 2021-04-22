@@ -8,6 +8,8 @@
 #include <utility>
 #include <vector>
 
+namespace cplib
+{
 using namespace std;
 
 template <typename T>
@@ -17,43 +19,14 @@ struct Dijkstra
     T INF       = numeric_limits<T>::max();
 
     Graph       g;
-    int         src, m = 0;
+    int         src;
     vector<int> p;
     vector<T>   d;
 
     Dijkstra(int n) : g(n), p(n), d(n){};
-    void add_edge(int u, int v, T w = 1) { g[u].emplace_back(v, w), m++; }
+    void add_edge(int u, int v, T w = 1) { g[u].emplace_back(v, w); }
 
-    void run_dense(int src = 0)
-    {
-        clear(src);
-
-        int          n = g.size();
-        vector<bool> vis(n, false);
-        d[src] = 0;
-        for (int i = 0; i < n; i++)
-        {
-            int u = -1;
-            for (int v = 0; v < n; v++)
-                if (not vis[v] and (u == -1 or d[v] < d[u]))
-                    u = v;
-
-            if (d[u] == INF)
-                break;
-
-            vis[u] = true;
-            for (auto [v, w] : g[u])
-            {
-                if (d[u] + w < d[v])
-                {
-                    d[v] = d[u] + w;
-                    p[v] = u;
-                }
-            }
-        }
-    }
-
-    void run_sparse(int src = 0)
+    void run(int src = 0)
     {
         clear(src);
 
@@ -107,14 +80,10 @@ struct Dijkstra
         fill(begin(p), end(p), -1);
         fill(begin(d), end(d), INF);
     }
-    void operator()(int src = 0)
-    {
-        long long n = g.size();
-        if (n * n + m < (n + m) * log2(n))
-            run_dense(src);
-        else
-            run_sparse(src);
-    }
+    bool is_reachable(int u) { return d[u] != INF; }
+    T    distance(int u) { return d[u]; }
+    void operator()(int src = 0) { run(src); }
 };
+} // namespace cplib
 
 #endif // CPLIB_DIJKSTRA_HPP

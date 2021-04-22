@@ -4,6 +4,8 @@
 #include <cmath>
 #include <vector>
 
+namespace cplib
+{
 using namespace std;
 
 struct LCA
@@ -19,12 +21,12 @@ struct LCA
     void operator()(void)
     {
         int timer = 0;
-        preprocess(g, 0, 0, timer);
+        preprocess(0, 0, timer);
     }
 
     void add_edge(int u, int v) { g[u].push_back(v), g[v].push_back(u); }
 
-    void preprocess(const Tree &g, int u, int p, int &timer)
+    void preprocess(int u, int p, int &timer)
     {
         tin[u]   = ++timer;
         up[u][0] = p;
@@ -33,7 +35,7 @@ struct LCA
 
         for (int v : g[u])
             if (v != p)
-                preprocess(g, v, u, timer);
+                preprocess(v, u, timer);
 
         tout[u] = ++timer;
     }
@@ -69,5 +71,6 @@ struct LCA
         return up[u][0];
     }
 };
+} // namespace cplib
 
 #endif // CPLIB_LCA_HPP

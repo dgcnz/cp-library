@@ -5,13 +5,17 @@
 #include <cassert>
 #include <vector>
 
+namespace cplib
+{
+using namespace std;
+
 template <int SIZE>
 struct Sieve
 {
     static_assert(0 <= SIZE and SIZE <= 1e8, "0 <= SIZE <= 1e8");
     using byte = unsigned char;
-    std::bitset<SIZE> is_prime;
-    std::vector<int>  primes;
+    bitset<SIZE> is_prime;
+    vector<int>  primes;
 
     Sieve()
     {
@@ -29,5 +33,6 @@ struct Sieve
                 primes.push_back(i);
     }
 };
+} // namespace cplib
 
 #endif // CPLIB_SIEVE_HPP

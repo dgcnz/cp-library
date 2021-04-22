@@ -30,6 +30,7 @@ vector<int> toposort(const vector<vector<int>> &g)
     for (int u = 0; u < n; ++u)
         if (not visited[u] and not dfs(u))
             return {};
+    reverse(order.begin(), order.end());
     return order;
 }
 

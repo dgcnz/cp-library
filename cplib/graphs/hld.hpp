@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <vector>
 
+namespace cplib
+{
 using namespace std;
 
 template <template <class S, S (*op)(S, S), S (*e)()> class segtree,
@@ -130,5 +132,6 @@ struct HLD
     void set(int u, S new_value) { st.set(pos[u], new_value); }
     S    get(int u) { return st.get(pos[u]); }
 };
+} // namespace cplib
 
 #endif // CPLIB_HLD_HPP

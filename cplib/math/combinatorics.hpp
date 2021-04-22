@@ -1,14 +1,17 @@
 #ifndef CPLIB_COMBINATORICS_HPP
 #define CPLIB_COMBINATORICS_HPP
 
-#include <atcoder/modint>
 #include <cassert>
 #include <vector>
+
+namespace cplib
+{
+using namespace std;
 
 template <int NMAX, typename mint>
 struct Combinations
 {
-    std::vector<mint> fact, inv_fact;
+    vector<mint> fact, inv_fact;
 
     Combinations(void) { precompute(NMAX + 1); }
 
@@ -44,5 +47,6 @@ struct Combinations
     }
     mint operator()(int n, int k) const { return C(n, k); }
 };
+} // namespace cplib
 
 #endif // CPLIB_COMBINATORICS_HPP

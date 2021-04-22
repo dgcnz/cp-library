@@ -5,6 +5,10 @@
 #include <cplib/math/binary_exponentiation>
 #include <vector>
 
+namespace cplib
+{
+using namespace std;
+
 template <int M>
 class ModInt
 {
@@ -13,8 +17,8 @@ class ModInt
     ll x;
 
   public:
-    static const int                MOD = M;
-    inline static std::vector<mint> inverse{0, 1};
+    static const int           MOD = M;
+    inline static vector<mint> inverse{0, 1};
 
     ModInt(ll x) : x(x) {}
     ModInt() : x(0) {}
@@ -68,5 +72,6 @@ class ModInt
         return binpow(mint(x), MOD - 2);
     }
 };
+} // namespace cplib
 
 #endif // CPLIB_MODINT_HPP
