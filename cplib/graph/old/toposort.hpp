@@ -1,12 +1,15 @@
-#ifndef CPLIB_TOPOSORT_HPP
-#define CPLIB_TOPOSORT_HPP
+#pragma once
 
+#include <cplib/graphs/graph>
 #include <functional>
 #include <vector>
 
 using namespace std;
 
-vector<int> toposort(const vector<vector<int>> &g)
+namespace cplib
+{
+template <typename W>
+vector<int> toposort(Graph<W> g)
 {
     int         n = g.size();
     vector<int> visited(n, false), order;
@@ -18,7 +21,7 @@ vector<int> toposort(const vector<vector<int>> &g)
             return true;
 
         visited[u] = 1;
-        for (auto v : g[u])
+        for (auto v : g.neighbors(u))
             if (not dfs(v))
                 return false;
 
@@ -33,5 +36,4 @@ vector<int> toposort(const vector<vector<int>> &g)
     reverse(order.begin(), order.end());
     return order;
 }
-
-#endif // CPLIB_TOPOSORT_HPP
+} // namespace cplib

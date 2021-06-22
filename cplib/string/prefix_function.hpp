@@ -1,12 +1,13 @@
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 
-using namespace std;
-using vi = vector<int>;
-
-vi prefix_function(string s)
+namespace cplib
 {
-    int n = (int)s.size();
-    vi  pi(n, 0);
+using namespace std;
+vector<int> prefix_function(string const &s)
+{
+    int         n = s.size();
+    vector<int> pi(n, 0);
     for (int i = 1; i < n; i++)
     {
         int j = pi[i - 1];
@@ -18,3 +19,4 @@ vi prefix_function(string s)
     }
     return pi;
 }
+} // namespace cplib
