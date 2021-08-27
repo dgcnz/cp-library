@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <vector>
 
 namespace cplib
 {
