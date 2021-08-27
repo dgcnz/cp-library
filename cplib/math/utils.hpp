@@ -28,6 +28,21 @@ bool is_power_two(long long n)
     return (n & (n - 1)) == 0;
 }
 
+template <class T>
+T prefix_remainder_count(T n, T m, T r)
+{
+    assert(0 <= n and r < m);
+    return (n + m - r - 1) / m;
+}
+
+template <class T>
+T range_remainder_count(T min, T max, T m, T r)
+{
+    assert(min >= 0 and min <= max);
+    return prefix_remainder_count(max + 1, m, r) -
+           prefix_remainder_count(min, m, r);
+}
+
 } // namespace cplib
 
 #endif // CPLIB_MATH_UTILS_HPP

@@ -2,6 +2,7 @@
 #define CPLIB_GRIDGRAPH_HPP
 
 #include <cplib/graph/graph>
+#include <cplib/utils/lazy_view>
 #include <functional>
 #include <string>
 #include <utility>
@@ -78,12 +79,15 @@ struct GridGraph
 template <typename W>
 struct ImplicitGridGraph
 {
+    using self     = ImplicitGridGraph<W>;
     using ii       = pair<int, int>;
     using adj_list = vector<pair<int, W>>;
     vector<string> const &table;
     int                   n, m;
     function<bool(ii)>    valid;
     function<W(ii, ii)>   cost;
+    vector<ii> const      dir = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
     ImplicitGridGraph(vector<string> const &table,
                       function<bool(ii)>    valid,
                       function<W(ii, ii)>   cost)
@@ -91,24 +95,61 @@ struct ImplicitGridGraph
           cost(cost)
     {
     }
-    size_t     size() const { return n * m; }
-    inline ii  rid(int u) const { return {u / m, u % m}; }
-    inline int id(int r, int c) const { return r * m + c; }
-    inline int id(ii pos) const { return pos.first * m + pos.second; }
-
-    adj_list operator[](int u) const
+    size_t      size() const { return n * m; }
+    inline ii   rid(int u) const { return {u / m, u % m}; }
+    inline int  id(int r, int c) const { return r * m + c; }
+    inline int  id(ii pos) const { return pos.first * m + pos.second; }
+    inline bool in_range(int r, int c) const
     {
-        adj_list neighbors;
-        auto [r, c] = rid(u);
-        if (r > 0 and valid({r - 1, c}))
-            neighbors.emplace_back(id(r - 1, c), cost({r, c}, {r - 1, c}));
-        if (r < n - 1 and valid({r + 1, c}))
-            neighbors.emplace_back(id(r + 1, c), cost({r, c}, {r + 1, c}));
-        if (c > 0 and valid({r, c - 1}))
-            neighbors.emplace_back(id(r, c - 1), cost({r, c}, {r, c - 1}));
-        if (c < m - 1 and valid({r, c + 1}))
-            neighbors.emplace_back(id(r, c + 1), cost({r, c}, {r, c + 1}));
-        return neighbors;
+        return 0 <= r and r < n and 0 <= c and c < m;
+    }
+    inline bool in_range(ii rc) const { return in_range(rc.first, rc.second); }
+
+    struct neighbor_state : public LazyState<ii>
+    {
+        int                         u, ix;
+        ImplicitGridGraph<W> const &g;
+        neighbor_state(int u, int ix, ImplicitGridGraph<W> const &g)
+            : u(u), ix(ix), g(g)
+        {
+        }
+
+        bool is_valid() const
+        {
+            auto [ur, uc] = g.rid(u);
+            auto [dr, dc] = g.dir[ix];
+            return g.in_range(ur + dr, uc + dc) and
+                   g.valid(ii{ur + dr, uc + dc});
+        }
+
+        ii value() const
+        {
+            auto [ur, uc] = g.rid(u);
+            auto [dr, dc] = g.dir[ix];
+            auto v        = g.id(ur + dr, uc + dc);
+            auto w        = g.cost(ii{ur, uc}, ii{ur + dr, uc + dc});
+            return ii{v, w};
+        }
+        void next()
+        {
+            if (ix < 4)
+                ++ix;
+            while (ix < 4 and not is_valid())
+                ++ix;
+        }
+        void init()
+        {
+            if (not is_valid())
+                next();
+        };
+        bool terminated() const { return ix >= 4; };
+    };
+
+    lazy_view<neighbor_state, ii> operator[](int u) const
+    {
+        neighbor_state s{u, 0, *this};
+        s.init();
+        return lazy_view<neighbor_state, ii>(s, s.terminated());
     }
 
     vector<int> neighbors(int u) const
