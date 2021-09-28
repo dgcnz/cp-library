@@ -1,9 +1,6 @@
 #ifndef CPLIB_ORDERED_MULTISET_HPP
 #define CPLIB_ORDERED_MULTISET_HPP
 
-#ifndef CPLIB_ORDERED_SET_HPP
-#define CPLIB_ORDERED_SET_HPP
-
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <utility>
@@ -64,7 +61,5 @@ struct ordered_multiset
 };
 
 } // namespace cplib
-
-#endif // CPLIB_ORDERED_SET_HPP
 
 #endif // CPLIB_ORDERED_MULTISET_HPP
