@@ -1,5 +1,6 @@
 #ifndef CPLIB_MATH_UTILS_HPP
 #define CPLIB_MATH_UTILS_HPP
+#include <cstdio>
 #include <utility>
 #include <vector>
 
@@ -21,12 +22,9 @@ long long legendre_formula(long long n, long long p)
     return e;
 }
 
-bool is_power_two(long long n)
-{
-    if (n == 0)
-        return false;
-    return (n & (n - 1)) == 0;
-}
+bool is_power_two(long long n) { return n == 0 ? 0 : (n & (n - 1)) == 0; }
+
+inline int max_power_two_exp(long long n) { return __builtin_ctzll(n); }
 
 template <class T>
 T prefix_remainder_count(T n, T m, T r)

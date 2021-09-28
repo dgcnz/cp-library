@@ -6,43 +6,45 @@
 
 namespace cplib
 {
+
 using namespace std;
+
 struct Direction
 {
-    int const first;
-    int const second;
+    int first;
+    int second;
 
-    constexpr bool operator==(Direction const &other) const
+    bool operator==(Direction const &other) const
     {
         return first == other.first and second == other.second;
     }
-    constexpr bool operator!=(Direction const &other) const
+
+    bool operator!=(Direction const &other) const
     {
         return first != other.first or second != other.second;
     }
 
-    constexpr Direction opposite() const { return Direction{-first, -second}; }
-    constexpr friend pair<int, int> operator+(pair<int, int> const &a,
-                                              Direction const &     b)
+    Direction opposite() const { return Direction{-first, -second}; }
+    friend pair<int, int> operator+(pair<int, int> const &a, Direction const &b)
     {
         return make_pair(a.first + b.first, a.second + b.second);
     }
-
-    static const Direction UP;
-    static const Direction RIGHT;
-    static const Direction DOWN;
-    static const Direction LEFT;
 };
+
+Direction const UP{-1, 0};
+Direction const RIGHT{0, +1};
+Direction const DOWN{+1, 0};
+Direction const LEFT{0, -1};
 
 char dir_to_char(Direction const &dir)
 {
-    if (dir == Direction::UP)
+    if (dir == UP)
         return 'U';
-    if (dir == Direction::RIGHT)
+    if (dir == RIGHT)
         return 'R';
-    if (dir == Direction::DOWN)
+    if (dir == DOWN)
         return 'D';
-    if (dir == Direction::LEFT)
+    if (dir == LEFT)
         return 'L';
     throw std::runtime_error("Unrecognized standard direction character.");
 }
@@ -52,22 +54,17 @@ Direction char_to_dir(char c)
     switch (c)
     {
     case 'U':
-        return Direction::UP;
+        return UP;
     case 'R':
-        return Direction::RIGHT;
+        return RIGHT;
     case 'D':
-        return Direction::DOWN;
+        return DOWN;
     case 'L':
-        return Direction::LEFT;
+        return LEFT;
     default:
         throw std::runtime_error("Unrecognized standard direction.");
     };
 }
-
-Direction const Direction::UP    = {-1, 0};
-Direction const Direction::RIGHT = {0, +1};
-Direction const Direction::DOWN  = {+1, 0};
-Direction const Direction::LEFT  = {0, -1};
 
 } // namespace cplib
 
