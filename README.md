@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/dgcnz/cp-library/workflows/verify/badge.svg)](https://github.com/dgcnz/cp-library/actions) 
+
 # Experimental competitive programmming library
 
 This is some work I've been doing to build my own library and pick/extend other's implementations of common algorithms and data structures in competitive programming. In the spirit of AtCoder's Library, I try to make this implementations as complete and generic as possible to be able to use them as oracles or black boxes.
