@@ -1,3 +1,6 @@
+#ifndef CPLIB_MATRIX_HPP
+#define CPLIB_MATRIX_HPP
+
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -99,3 +102,5 @@ template <typename T, int N>
 using SquareMatrix = Matrix<T, N, N>;
 
 } // namespace cplib
+
+#endif // CPLIB_MATRIX_HPP
