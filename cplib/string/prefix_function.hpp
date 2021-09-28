@@ -1,3 +1,6 @@
+#ifndef CPLIB_PREFIX_FUNCTION_HPP
+#define CPLIB_PREFIX_FUNCTION_HPP
+
 #include <string>
 #include <vector>
 
@@ -20,3 +23,5 @@ vector<int> prefix_function(string const &s)
     return pi;
 }
 } // namespace cplib
+
+#endif // CPLIB_PREFIX_FUNCTION_HPP

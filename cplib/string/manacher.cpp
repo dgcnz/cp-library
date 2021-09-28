@@ -1,19 +1,19 @@
-#include <bits/stdc++.h>
+#ifndef CPLIB_MANACHER_HPP
+#define CPLIB_MANACHER_HPP
+#include <string>
+#include <utility>
+#include <algorithm>
+#include <vector>
+
+namespace cplib
+{
 
 using namespace std;
 
-const int NMAX = 1e5 + 11;
-int       n, d1[NMAX], d2[NMAX];
-
-// odd manacher: for each i compute the number of palindromes centered at i
-// if i is out of the rightmost palindrome, then do trivial algorithm
-// otherwise, let j = l + r - i, the mirror of i on rightmost palindrome
-// we have already computed the palindromes of j, d[j]
-// however, d[j] borders might exceed the rightmost palindrome with ends [l, r]
-// In that, case, just take the minimum of them and extend as much as possible
-
-void manacher(const string &s)
+pair<vector<int>, vector<int>> manacher(string const &s)
 {
+    int         n = s.size();
+    vector<int> d1(n), d2(n);
     for (int i = 0, l = 0, r = -1; i < n; ++i)
     {
         int j = l + r - i;
@@ -41,4 +41,8 @@ void manacher(const string &s)
             r = i + k;
         }
     }
+    return {d1, d2};
 }
+}; // namespace cplib
+
+#endif // CPLIB_MANACHER_HPP
