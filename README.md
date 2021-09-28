@@ -1,35 +1,11 @@
 [![Actions Status](https://github.com/dgcnz/cp-library/workflows/verify/badge.svg)](https://github.com/dgcnz/cp-library/actions) 
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://dgcnz.github.io/cp-library/)
 
-# Experimental competitive programmming library
+# Competitive programming Library
 
 This is some work I've been doing to build my own library and pick/extend other's implementations of common algorithms and data structures in competitive programming. In the spirit of AtCoder's Library, I try to make this implementations as complete and generic as possible to be able to use them as oracles or black boxes.
 
 In some cases (`hld` and `combinatorics`), I use AtCoder's implementations as underlying containers, because they are *fast*.
-
-## Data Structures
-
-- Fenwick Tree (`<atcoder/fenwicktree>`)
-- Segment Tree (`<atcoder/segtree>`)
-- Lazy Segment Tree (`<atcoder/lazysegtree>`)
-
-## Graphs
-
-- Disjoint Set Union (`<atcoder/dsu>`)
-- Dijkstra (`<cplib/graphs/dijkstra>`)
-- Topological Sort (`<cplib/graphs/toposort>`)
-- LCA w/ binary lifting (`<cplib/graphs/lca>`)
-- Heavy-Light Decomposition (`<cplib/graphs/hld>`)
-- Strongly Connected Components (`<atcoder/scc>`)
-
-## Math
-
-- Sieve of Eratosthenes (`<cplib/math/sieve>`)
-- Binary Exponentiation (`<cplib/math/binary_exponentiation>`)
-- Binomial Coefficients (`<cplib/math/combinatorics>`)
-- ModInt 1 (`<atcoder/modint>`)
-- ModInt 2 (`<cplib/math/modint>`)
-
 
 There are other algorithms and data structures lying around, that are not included because:
 1. I don't know how to package them as an oracle

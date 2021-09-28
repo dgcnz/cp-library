@@ -66,7 +66,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/bfs01.hpp
   requiredBy: []
-  timestamp: '2021-06-23 13:21:07-05:00'
+  timestamp: '2021-09-28 13:06:15-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/bfs01.hpp

@@ -21,9 +21,9 @@ data:
     \  operator int() const { return val(); }\n    ll        val(void) const { return\
     \ mint::val(x); }\n    int       mod() const { return MOD; }\n    mint      pow(ll\
     \ n) const { return binpow(val(), n); }\n    static ll val(ll x)\n    {\n    \
-    \    if (x < 0)\n            return x + M;\n        return (x >= M ? x % M : x);\n\
-    \    }\n    mint &operator=(mint const &y)\n    {\n        x = y.val();\n    \
-    \    return *this;\n    }\n    mint &operator=(ll const &y) { return operator=(mint(y));\
+    \    if (x < 0)\n            return x + MOD;\n        return (x >= MOD ? x % MOD\
+    \ : x);\n    }\n    mint &operator=(mint const &y)\n    {\n        x = y.val();\n\
+    \        return *this;\n    }\n    mint &operator=(ll const &y) { return operator=(mint(y));\
     \ }\n    mint &operator+=(mint const &y) { return operator=(operator+(y)); }\n\
     \    mint &operator-=(mint const &y) { return operator=(operator-(y)); }\n   \
     \ mint &operator*=(mint const &y) { return operator=(operator*(y)); }\n    mint\
@@ -52,9 +52,9 @@ data:
     \  operator int() const { return val(); }\n    ll        val(void) const { return\
     \ mint::val(x); }\n    int       mod() const { return MOD; }\n    mint      pow(ll\
     \ n) const { return binpow(val(), n); }\n    static ll val(ll x)\n    {\n    \
-    \    if (x < 0)\n            return x + M;\n        return (x >= M ? x % M : x);\n\
-    \    }\n    mint &operator=(mint const &y)\n    {\n        x = y.val();\n    \
-    \    return *this;\n    }\n    mint &operator=(ll const &y) { return operator=(mint(y));\
+    \    if (x < 0)\n            return x + MOD;\n        return (x >= MOD ? x % MOD\
+    \ : x);\n    }\n    mint &operator=(mint const &y)\n    {\n        x = y.val();\n\
+    \        return *this;\n    }\n    mint &operator=(ll const &y) { return operator=(mint(y));\
     \ }\n    mint &operator+=(mint const &y) { return operator=(operator+(y)); }\n\
     \    mint &operator-=(mint const &y) { return operator=(operator-(y)); }\n   \
     \ mint &operator*=(mint const &y) { return operator=(operator*(y)); }\n    mint\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: false
   path: cplib/math/modint.hpp
   requiredBy: []
-  timestamp: '2021-04-22 18:17:08-05:00'
+  timestamp: '2021-09-28 13:06:15-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/modint.hpp
