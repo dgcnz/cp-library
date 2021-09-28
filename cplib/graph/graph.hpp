@@ -25,14 +25,6 @@ struct Graph
     adj_list &operator[](int u) { return g[u]; }
     adj_list  operator[](int u) const { return g[u]; }
 
-    vector<int> neighbors(int u) const
-    {
-        vector<int> ans(g[u].size());
-        transform(
-            all(g[u]), begin(ans), [](pair<int, W> p) { return p.first; });
-        return ans;
-    }
-
     typename vector<adj_list>::iterator begin() { return g.begin(); };
     typename vector<adj_list>::iterator end() { return g.end(); }
 };
@@ -50,8 +42,6 @@ struct Graph<void>
 
     adj_list &operator[](int u) { return g[u]; }
     adj_list  operator[](int u) const { return g[u]; }
-
-    vector<int> neighbors(int u) const { return g[u]; }
 
     typename vector<adj_list>::iterator begin() { return g.begin(); };
     typename vector<adj_list>::iterator end() { return g.end(); }

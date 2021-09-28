@@ -31,8 +31,8 @@ class ModInt
     static ll val(ll x)
     {
         if (x < 0)
-            return x + M;
-        return (x >= M ? x % M : x);
+            return x + MOD;
+        return (x >= MOD ? x % MOD : x);
     }
     mint &operator=(mint const &y)
     {
