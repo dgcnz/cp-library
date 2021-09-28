@@ -42,15 +42,15 @@ data:
     } // namespace cplib\n\n#endif // CPLIB_UNWEIGHTED_GRAPH_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/graph/experimental/unweighted_graph.hpp
+  path: cplib/experimental/unweighted_graph.hpp
   requiredBy: []
   timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: cplib/graph/experimental/unweighted_graph.hpp
+documentation_of: cplib/experimental/unweighted_graph.hpp
 layout: document
 redirect_from:
-- /library/cplib/graph/experimental/unweighted_graph.hpp
-- /library/cplib/graph/experimental/unweighted_graph.hpp.html
-title: cplib/graph/experimental/unweighted_graph.hpp
+- /library/cplib/experimental/unweighted_graph.hpp
+- /library/cplib/experimental/unweighted_graph.hpp.html
+title: cplib/experimental/unweighted_graph.hpp
 ---

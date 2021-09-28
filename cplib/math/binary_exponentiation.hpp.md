@@ -8,9 +8,6 @@ data:
   - icon: ':warning:'
     path: cplib/math/pfint.hpp
     title: cplib/math/pfint.hpp
-  - icon: ':warning:'
-    path: cplib/old/modint.hpp
-    title: cplib/old/modint.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -30,7 +27,6 @@ data:
   isVerificationFile: false
   path: cplib/math/binary_exponentiation.hpp
   requiredBy:
-  - cplib/old/modint.hpp
   - cplib/math/modint.hpp
   - cplib/math/pfint.hpp
   timestamp: '2020-12-17 19:42:35-05:00'

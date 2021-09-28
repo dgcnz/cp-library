@@ -8,17 +8,17 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"cplib/graph/experimental/dfs_visitor.hpp\"\n\n\n#include\
-    \ <functional>\n#include <tuple>\n#include <utility>\n#include <vector>\n\nnamespace\
-    \ cplib\n{\nusing namespace std;\n// BOOST GRAPH LIBRARY\ntemplate <typename Graph>\n\
-    struct DFSVisitor\n{\n    const Graph &g;\n\n    DFSVisitor(const Graph &g) :\
-    \ g(g) {}\n    void initialize_vertex([[maybe_unused]] int s)\n    {\n       \
-    \ // This is invoked on every vertex of the graph before the start of the\n  \
-    \      // graph search.\n    }\n    void start_search([[maybe_unused]] int s)\n\
-    \    {\n        // This is invoked on the source vertex once before the start\
-    \ of the\n        // search.\n    }\n    void discover_vertex([[maybe_unused]]\
-    \ int u)\n    {\n        // This is invoked when a vertex is encountered for the\
-    \ first time.\n    }\n    template <typename... EdgeTypes>\n    void examine_edge([[maybe_unused]]\
+  bundledCode: "#line 1 \"cplib/experimental/dfs_visitor.hpp\"\n\n\n#include <functional>\n\
+    #include <tuple>\n#include <utility>\n#include <vector>\n\nnamespace cplib\n{\n\
+    using namespace std;\n// BOOST GRAPH LIBRARY\ntemplate <typename Graph>\nstruct\
+    \ DFSVisitor\n{\n    const Graph &g;\n\n    DFSVisitor(const Graph &g) : g(g)\
+    \ {}\n    void initialize_vertex([[maybe_unused]] int s)\n    {\n        // This\
+    \ is invoked on every vertex of the graph before the start of the\n        //\
+    \ graph search.\n    }\n    void start_search([[maybe_unused]] int s)\n    {\n\
+    \        // This is invoked on the source vertex once before the start of the\n\
+    \        // search.\n    }\n    void discover_vertex([[maybe_unused]] int u)\n\
+    \    {\n        // This is invoked when a vertex is encountered for the first\
+    \ time.\n    }\n    template <typename... EdgeTypes>\n    void examine_edge([[maybe_unused]]\
     \ EdgeTypes... e)\n    {\n        // This is invoked on every out-edge of each\
     \ vertex after it is\n        // discovered.\n    }\n\n    template <typename...\
     \ EdgeTypes>\n    void on_tree_edge([[maybe_unused]] EdgeTypes... e)\n    {\n\
@@ -92,15 +92,15 @@ data:
     \    }\n};\n\n} // namespace cplib\n\n#endif // CPLIB_DFS_VISITOR_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/graph/experimental/dfs_visitor.hpp
+  path: cplib/experimental/dfs_visitor.hpp
   requiredBy: []
-  timestamp: '2021-06-22 17:00:12-05:00'
+  timestamp: '2021-09-28 18:42:31-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: cplib/graph/experimental/dfs_visitor.hpp
+documentation_of: cplib/experimental/dfs_visitor.hpp
 layout: document
 redirect_from:
-- /library/cplib/graph/experimental/dfs_visitor.hpp
-- /library/cplib/graph/experimental/dfs_visitor.hpp.html
-title: cplib/graph/experimental/dfs_visitor.hpp
+- /library/cplib/experimental/dfs_visitor.hpp
+- /library/cplib/experimental/dfs_visitor.hpp.html
+title: cplib/experimental/dfs_visitor.hpp
 ---

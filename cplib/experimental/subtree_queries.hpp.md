@@ -39,15 +39,15 @@ data:
     \n#endif // CPLIB_SUBTREE_QUERIES_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/graph/experimental/subtree_queries.hpp
+  path: cplib/experimental/subtree_queries.hpp
   requiredBy: []
   timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: cplib/graph/experimental/subtree_queries.hpp
+documentation_of: cplib/experimental/subtree_queries.hpp
 layout: document
 redirect_from:
-- /library/cplib/graph/experimental/subtree_queries.hpp
-- /library/cplib/graph/experimental/subtree_queries.hpp.html
-title: cplib/graph/experimental/subtree_queries.hpp
+- /library/cplib/experimental/subtree_queries.hpp
+- /library/cplib/experimental/subtree_queries.hpp.html
+title: cplib/experimental/subtree_queries.hpp
 ---
