@@ -3,6 +3,7 @@
 
 #include "cplib/graph/graph.hpp"
 #include <cmath>
+#include <functional>
 #include <vector>
 
 namespace cplib
@@ -20,26 +21,24 @@ struct LCA
         : g(g), up(g.size(), vector<int>(log2(g.size()) + 2)), tin(g.size()),
           tout(g.size())
     {
-    }
+        int                      timer = 0, n = g.size();
+        function<void(int, int)> dfs = [&](int u, int p)
+        {
+            tin[u]   = ++timer;
+            up[u][0] = p;
+            for (int i = 1, height = up[0].size(); i < height; ++i)
+                up[u][i] = up[up[u][i - 1]][i - 1];
 
-    void operator()(void)
-    {
-        int timer = 0;
-        preprocess(0, 0, timer);
-    }
+            for (auto vw : g[u])
+                if (g.vertex(vw) != p)
+                    dfs(g.vertex(vw), u);
 
-    void preprocess(int u, int p, int &timer)
-    {
-        tin[u]   = ++timer;
-        up[u][0] = p;
-        for (int i = 1, height = up[0].size(); i < height; ++i)
-            up[u][i] = up[up[u][i - 1]][i - 1];
+            tout[u] = ++timer;
+        };
 
-        for (auto [v, w] : g[u])
-            if (v != p)
-                preprocess(v, u, timer);
-
-        tout[u] = ++timer;
+        for (int u = 0; u < n; ++u)
+            if (tin[u] == 0)
+                dfs(u, u);
     }
 
     bool is_ancestor(int u, int v) const
@@ -56,7 +55,7 @@ struct LCA
             u = up[u][i];
             k ^= 1LL << i;
         }
-        if (u == 0)
+        if (up[u][0] == u)
             return -1;
         return u;
     }
@@ -72,6 +71,8 @@ struct LCA
                 u = up[u][i];
         return up[u][0];
     }
+
+    int operator()(int u, int v) const { return lca(u, v); }
 };
 } // namespace cplib
 
