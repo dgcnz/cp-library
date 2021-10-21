@@ -31,6 +31,9 @@ data:
       path: cplib/graph/bfs01.hpp
       title: cplib/graph/bfs01.hpp
     - icon: ':warning:'
+      path: cplib/graph/blockcut.hpp
+      title: cplib/graph/blockcut.hpp
+    - icon: ':warning:'
       path: cplib/graph/dijkstra.hpp
       title: cplib/graph/dijkstra.hpp
     - icon: ':warning:'
@@ -42,6 +45,9 @@ data:
     - icon: ':warning:'
       path: cplib/graph/lca.hpp
       title: cplib/graph/lca.hpp
+    - icon: ':warning:'
+      path: cplib/graph/pathqueries.hpp
+      title: cplib/graph/pathqueries.hpp
   - name: cplib/math
     pages:
     - icon: ':warning:'
