@@ -68,6 +68,19 @@ struct SmallestPrimeSieve
     }
 };
 
+template <int SIZE>
+struct DivisorCountSieve
+{
+    static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
+    vector<int> cnt;
+    DivisorCountSieve() : cnt(SIZE, 0)
+    {
+        for (int i = 1; i <= SIZE; i++)
+            for (int j = i; j < SIZE; j += i)
+                cnt[j]++;
+    }
+};
+
 } // namespace cplib
 
 #endif // CPLIB_SIEVE_HPP
