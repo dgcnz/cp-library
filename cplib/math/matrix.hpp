@@ -1,6 +1,8 @@
 #ifndef CPLIB_MATRIX_HPP
 #define CPLIB_MATRIX_HPP
 
+// source: https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp
+
 #include <algorithm>
 #include <cassert>
 #include <cmath>
