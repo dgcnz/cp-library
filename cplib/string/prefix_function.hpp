@@ -7,16 +7,17 @@
 namespace cplib
 {
 using namespace std;
-vector<int> prefix_function(string const &s)
+template <typename EQF = std::equal_to<char>>
+vector<int> prefix_function(string const &s, EQF eq = std::equal_to<char>())
 {
     int         n = s.size();
     vector<int> pi(n, 0);
     for (int i = 1; i < n; i++)
     {
         int j = pi[i - 1];
-        while (j > 0 and s[i] != s[j])
+        while (j > 0 and not eq(s[i], s[j]))
             j = pi[j - 1];
-        if (s[i] == s[j])
+        if (eq(s[i], s[j]))
             j++;
         pi[i] = j;
     }
