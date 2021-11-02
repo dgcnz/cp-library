@@ -53,7 +53,16 @@ data:
     \         {\n                if (d[u] + w < d[v])\n                {\n       \
     \             q.erase({d[v], v});\n                    d[v] = d[u] + w;\n    \
     \                p[v] = u;\n                    q.emplace(d[v], v);\n        \
-    \        }\n            }\n        }\n    }\n\n    Graph<W> shortest_path_DAG(void)\
+    \        }\n            }\n        }\n    }\n\n    void run_avoid(int src, int\
+    \ prohibited)\n    {\n        this->src = src;\n        fill(begin(p), end(p),\
+    \ -1);\n        fill(begin(d), end(d), INF);\n\n        set<pair<W, int>> q;\n\
+    \        d[src] = 0;\n        q.emplace(d[src], src);\n        while (!q.empty())\n\
+    \        {\n            int u = q.begin()->second;\n            q.erase(q.begin());\n\
+    \n            for (auto [v, w] : g[u])\n            {\n                if (v ==\
+    \ prohibited)\n                    continue;\n                if (d[u] + w < d[v])\n\
+    \                {\n                    q.erase({d[v], v});\n                \
+    \    d[v] = d[u] + w;\n                    p[v] = u;\n                    q.emplace(d[v],\
+    \ v);\n                }\n            }\n        }\n    }\n\n    Graph<W> shortest_path_DAG(void)\
     \ const\n    {\n        int      n = g.size();\n        Graph<W> dag(n);\n   \
     \     for (int v = 0; v < n; ++v)\n            if (auto u = p[v]; u != -1)\n \
     \               dag.add_edge(u, v, d[v] - d[u]);\n        return dag;\n    }\n\
@@ -78,7 +87,16 @@ data:
     \         {\n                if (d[u] + w < d[v])\n                {\n       \
     \             q.erase({d[v], v});\n                    d[v] = d[u] + w;\n    \
     \                p[v] = u;\n                    q.emplace(d[v], v);\n        \
-    \        }\n            }\n        }\n    }\n\n    Graph<W> shortest_path_DAG(void)\
+    \        }\n            }\n        }\n    }\n\n    void run_avoid(int src, int\
+    \ prohibited)\n    {\n        this->src = src;\n        fill(begin(p), end(p),\
+    \ -1);\n        fill(begin(d), end(d), INF);\n\n        set<pair<W, int>> q;\n\
+    \        d[src] = 0;\n        q.emplace(d[src], src);\n        while (!q.empty())\n\
+    \        {\n            int u = q.begin()->second;\n            q.erase(q.begin());\n\
+    \n            for (auto [v, w] : g[u])\n            {\n                if (v ==\
+    \ prohibited)\n                    continue;\n                if (d[u] + w < d[v])\n\
+    \                {\n                    q.erase({d[v], v});\n                \
+    \    d[v] = d[u] + w;\n                    p[v] = u;\n                    q.emplace(d[v],\
+    \ v);\n                }\n            }\n        }\n    }\n\n    Graph<W> shortest_path_DAG(void)\
     \ const\n    {\n        int      n = g.size();\n        Graph<W> dag(n);\n   \
     \     for (int v = 0; v < n; ++v)\n            if (auto u = p[v]; u != -1)\n \
     \               dag.add_edge(u, v, d[v] - d[u]);\n        return dag;\n    }\n\
@@ -94,7 +112,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-10-21 16:39:26-05:00'
+  timestamp: '2021-11-02 13:46:49-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/dijkstra.hpp

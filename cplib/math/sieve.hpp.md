@@ -28,8 +28,12 @@ data:
     \ (!v[j * i])\n                        v[j * i] = true, sp[j * i] = i;\n     \
     \       }\n        }\n    }\n    vector<int> get_primes() const\n    {\n     \
     \   vector<int> p;\n        for (int x = 2; x < SIZE; ++x)\n            if (sp[x]\
-    \ == x)\n                p.push_back(x);\n        return p;\n    }\n};\n\n} //\
-    \ namespace cplib\n\n\n"
+    \ == x)\n                p.push_back(x);\n        return p;\n    }\n};\n\ntemplate\
+    \ <int SIZE>\nstruct DivisorCountSieve\n{\n    static_assert(1 <= SIZE and SIZE\
+    \ < 2e7, \"1 <= SIZE < 2e7\");\n    vector<int> cnt;\n    DivisorCountSieve()\
+    \ : cnt(SIZE, 0)\n    {\n        for (int i = 1; i <= SIZE; i++)\n           \
+    \ for (int j = i; j < SIZE; j += i)\n                cnt[j]++;\n    }\n};\n\n\
+    } // namespace cplib\n\n\n"
   code: "#ifndef CPLIB_SIEVE_HPP\n#define CPLIB_SIEVE_HPP\n\n#include <bitset>\n#include\
     \ <cassert>\n#include <vector>\n\nnamespace cplib\n{\nusing namespace std;\n\n\
     template <int SIZE>\nstruct IsPrimeSieve\n{\n    static_assert(0 <= SIZE and SIZE\
@@ -50,13 +54,17 @@ data:
     \ (!v[j * i])\n                        v[j * i] = true, sp[j * i] = i;\n     \
     \       }\n        }\n    }\n    vector<int> get_primes() const\n    {\n     \
     \   vector<int> p;\n        for (int x = 2; x < SIZE; ++x)\n            if (sp[x]\
-    \ == x)\n                p.push_back(x);\n        return p;\n    }\n};\n\n} //\
-    \ namespace cplib\n\n#endif // CPLIB_SIEVE_HPP\n"
+    \ == x)\n                p.push_back(x);\n        return p;\n    }\n};\n\ntemplate\
+    \ <int SIZE>\nstruct DivisorCountSieve\n{\n    static_assert(1 <= SIZE and SIZE\
+    \ < 2e7, \"1 <= SIZE < 2e7\");\n    vector<int> cnt;\n    DivisorCountSieve()\
+    \ : cnt(SIZE, 0)\n    {\n        for (int i = 1; i <= SIZE; i++)\n           \
+    \ for (int j = i; j < SIZE; j += i)\n                cnt[j]++;\n    }\n};\n\n\
+    } // namespace cplib\n\n#endif // CPLIB_SIEVE_HPP\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/sieve.hpp
   requiredBy: []
-  timestamp: '2021-06-22 17:00:12-05:00'
+  timestamp: '2021-11-02 13:44:17-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/sieve.hpp

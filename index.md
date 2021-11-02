@@ -7,6 +7,9 @@ data:
       path: cplib/data_structure/hld.hpp
       title: cplib/data_structure/hld.hpp
     - icon: ':warning:'
+      path: cplib/data_structure/mo.hpp
+      title: cplib/data_structure/mo.hpp
+    - icon: ':warning:'
       path: cplib/data_structure/ordered_multiset.hpp
       title: cplib/data_structure/ordered_multiset.hpp
     - icon: ':warning:'
@@ -69,8 +72,14 @@ data:
       path: cplib/math/pfint.hpp
       title: cplib/math/pfint.hpp
     - icon: ':warning:'
+      path: cplib/math/rational.hpp
+      title: cplib/math/rational.hpp
+    - icon: ':warning:'
       path: cplib/math/sieve.hpp
       title: cplib/math/sieve.hpp
+    - icon: ':warning:'
+      path: cplib/math/static_matrix.hpp
+      title: cplib/math/static_matrix.hpp
     - icon: ':warning:'
       path: cplib/math/utils.hpp
       title: cplib/math/utils.hpp
@@ -114,6 +123,9 @@ data:
     - icon: ':warning:'
       path: cplib/utils/misc.hpp
       title: cplib/utils/misc.hpp
+    - icon: ':warning:'
+      path: cplib/utils/multidimensional.hpp
+      title: cplib/utils/multidimensional.hpp
     - icon: ':warning:'
       path: cplib/utils/number_iterator.hpp
       title: cplib/utils/number_iterator.hpp
