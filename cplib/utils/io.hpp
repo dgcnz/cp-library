@@ -30,16 +30,16 @@ void write(InputIt first, InputIt last, const char *delim = "\n")
 
 template <typename InputIt,
           typename T = typename iterator_traits<InputIt>::value_type>
-void decrement(InputIt first, InputIt last)
+void decrement(InputIt first, InputIt last, T k = 1)
 {
-    transform(first, last, first, [](T x) { return x - 1; });
+    transform(first, last, first, [k](T x) { return x - k; });
 }
 
 template <typename InputIt,
           typename T = typename iterator_traits<InputIt>::value_type>
-void increment(InputIt first, InputIt last)
+void increment(InputIt first, InputIt last, T k = 1)
 {
-    transform(first, last, first, [](T x) { return x + 1; });
+    transform(first, last, first, [k](T x) { return x + k; });
 }
 
 } // namespace cplib
