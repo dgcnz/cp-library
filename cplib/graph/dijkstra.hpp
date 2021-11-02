@@ -49,6 +49,35 @@ struct Dijkstra
         }
     }
 
+    void run_avoid(int src, int prohibited)
+    {
+        this->src = src;
+        fill(begin(p), end(p), -1);
+        fill(begin(d), end(d), INF);
+
+        set<pair<W, int>> q;
+        d[src] = 0;
+        q.emplace(d[src], src);
+        while (!q.empty())
+        {
+            int u = q.begin()->second;
+            q.erase(q.begin());
+
+            for (auto [v, w] : g[u])
+            {
+                if (v == prohibited)
+                    continue;
+                if (d[u] + w < d[v])
+                {
+                    q.erase({d[v], v});
+                    d[v] = d[u] + w;
+                    p[v] = u;
+                    q.emplace(d[v], v);
+                }
+            }
+        }
+    }
+
     Graph<W> shortest_path_DAG(void) const
     {
         int      n = g.size();
