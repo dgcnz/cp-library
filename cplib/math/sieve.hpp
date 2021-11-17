@@ -43,7 +43,7 @@ struct SmallestPrimeSieve
 {
     static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
     vector<int> sp, v;
-    SmallestPrimeSieve() : sp(SIZE), v(SIZE, false)
+    SmallestPrimeSieve() : sp(SIZE, 1), v(SIZE, false)
     {
         for (int i = 2; i < SIZE; i += 2)
             sp[i] = 2;
@@ -63,6 +63,29 @@ struct SmallestPrimeSieve
         vector<int> p;
         for (int x = 2; x < SIZE; ++x)
             if (sp[x] == x)
+                p.push_back(x);
+        return p;
+    }
+};
+
+template <int SIZE>
+struct LargestPrimeSieve
+{
+    static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
+    vector<int> lp;
+    LargestPrimeSieve() : lp(SIZE)
+    {
+        lp[0] = lp[1] = 1;
+        for (int i = 1; i < SIZE; ++i)
+            if (lp[i] == 1)
+                for (int j = i; j < SIZE; j += i)
+                    lp[j] = i;
+    }
+    vector<int> get_primes() const
+    {
+        vector<int> p;
+        for (int x = 2; x < SIZE; ++x)
+            if (lp[x] == x)
                 p.push_back(x);
         return p;
     }
