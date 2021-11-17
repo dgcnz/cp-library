@@ -7,24 +7,25 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
-  bundledCode: "#line 1 \"cplib/math/matrix.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <cmath>\n#include <iostream>\n#include <iterator>\n#include\
-    \ <type_traits>\n#include <vector>\n\ntemplate <typename T>\nstruct matrix\n{\n\
-    \    int                               H, W;\n    std::vector<T>             \
-    \       elem;\n    typename std::vector<T>::iterator operator[](int i)\n    {\n\
-    \        return elem.begin() + i * W;\n    }\n    inline T &at(int i, int j) {\
-    \ return elem[i * W + j]; }\n    inline T  get(int i, int j) const { return elem[i\
-    \ * W + j]; }\n    int       height() const { return H; }\n    int       width()\
-    \ const { return W; }\n    std::vector<std::vector<T>> std() const\n    {\n  \
-    \      std::vector<std::vector<T>> ret(H, std::vector<T>(W));\n        for (int\
-    \ i = 0; i < H; i++)\n            std::copy(elem.begin() + i * W,\n          \
-    \            elem.begin() + (i + 1) * W,\n                      std::begin(ret[i]));\n\
-    \        return ret;\n    }\n    operator std::vector<std::vector<T>>() const\
-    \ { return std(); }\n    matrix() = default;\n    matrix(int H, int W) : H(H),\
-    \ W(W), elem(H * W) {}\n    matrix(const std::vector<std::vector<T>> &d)\n   \
-    \     : H(d.size()), W(d.size() ? d[0].size() : 0), elem(H * W)\n    {\n     \
-    \   for (int i = 0; i < H; ++i)\n            std::copy(d[i].begin(), d[i].end(),\
+    links:
+    - https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp
+  bundledCode: "#line 1 \"cplib/math/matrix.hpp\"\n\n\n\n// source: https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp\n\
+    \n#include <algorithm>\n#include <cassert>\n#include <cmath>\n#include <iostream>\n\
+    #include <iterator>\n#include <type_traits>\n#include <vector>\n\ntemplate <typename\
+    \ T>\nstruct matrix\n{\n    int                               H, W;\n    std::vector<T>\
+    \                    elem;\n    typename std::vector<T>::iterator operator[](int\
+    \ i)\n    {\n        return elem.begin() + i * W;\n    }\n    inline T &at(int\
+    \ i, int j) { return elem[i * W + j]; }\n    inline T  get(int i, int j) const\
+    \ { return elem[i * W + j]; }\n    int       height() const { return H; }\n  \
+    \  int       width() const { return W; }\n    std::vector<std::vector<T>> std()\
+    \ const\n    {\n        std::vector<std::vector<T>> ret(H, std::vector<T>(W));\n\
+    \        for (int i = 0; i < H; i++)\n            std::copy(elem.begin() + i *\
+    \ W,\n                      elem.begin() + (i + 1) * W,\n                    \
+    \  std::begin(ret[i]));\n        return ret;\n    }\n    operator std::vector<std::vector<T>>()\
+    \ const { return std(); }\n    matrix() = default;\n    matrix(int H, int W) :\
+    \ H(H), W(W), elem(H * W) {}\n    matrix(const std::vector<std::vector<T>> &d)\n\
+    \        : H(d.size()), W(d.size() ? d[0].size() : 0), elem(H * W)\n    {\n  \
+    \      for (int i = 0; i < H; ++i)\n            std::copy(d[i].begin(), d[i].end(),\
     \ begin(elem) + i * W);\n    }\n\n    static matrix Identity(int N)\n    {\n \
     \       matrix ret(N, N);\n        for (int i = 0; i < N; i++)\n            ret.at(i,\
     \ i) = 1;\n        return ret;\n    }\n\n    matrix operator-() const\n    {\n\
@@ -136,23 +137,23 @@ data:
     \ long int k, int a = 1, int b = 1)\n{\n    matrix<T> mat(2, 2);\n    mat[0][1]\
     \ = 1;\n    mat[1][0] = b;\n    mat[1][1] = a;\n    return mat.pow(k + 1)[0][1];\n\
     }\n\n\n"
-  code: "#ifndef CPLIB_MATRIX_HPP\n#define CPLIB_MATRIX_HPP\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <cmath>\n#include <iostream>\n#include <iterator>\n\
-    #include <type_traits>\n#include <vector>\n\ntemplate <typename T>\nstruct matrix\n\
-    {\n    int                               H, W;\n    std::vector<T>           \
-    \         elem;\n    typename std::vector<T>::iterator operator[](int i)\n   \
-    \ {\n        return elem.begin() + i * W;\n    }\n    inline T &at(int i, int\
-    \ j) { return elem[i * W + j]; }\n    inline T  get(int i, int j) const { return\
-    \ elem[i * W + j]; }\n    int       height() const { return H; }\n    int    \
-    \   width() const { return W; }\n    std::vector<std::vector<T>> std() const\n\
-    \    {\n        std::vector<std::vector<T>> ret(H, std::vector<T>(W));\n     \
-    \   for (int i = 0; i < H; i++)\n            std::copy(elem.begin() + i * W,\n\
-    \                      elem.begin() + (i + 1) * W,\n                      std::begin(ret[i]));\n\
-    \        return ret;\n    }\n    operator std::vector<std::vector<T>>() const\
-    \ { return std(); }\n    matrix() = default;\n    matrix(int H, int W) : H(H),\
-    \ W(W), elem(H * W) {}\n    matrix(const std::vector<std::vector<T>> &d)\n   \
-    \     : H(d.size()), W(d.size() ? d[0].size() : 0), elem(H * W)\n    {\n     \
-    \   for (int i = 0; i < H; ++i)\n            std::copy(d[i].begin(), d[i].end(),\
+  code: "#ifndef CPLIB_MATRIX_HPP\n#define CPLIB_MATRIX_HPP\n\n// source: https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp\n\
+    \n#include <algorithm>\n#include <cassert>\n#include <cmath>\n#include <iostream>\n\
+    #include <iterator>\n#include <type_traits>\n#include <vector>\n\ntemplate <typename\
+    \ T>\nstruct matrix\n{\n    int                               H, W;\n    std::vector<T>\
+    \                    elem;\n    typename std::vector<T>::iterator operator[](int\
+    \ i)\n    {\n        return elem.begin() + i * W;\n    }\n    inline T &at(int\
+    \ i, int j) { return elem[i * W + j]; }\n    inline T  get(int i, int j) const\
+    \ { return elem[i * W + j]; }\n    int       height() const { return H; }\n  \
+    \  int       width() const { return W; }\n    std::vector<std::vector<T>> std()\
+    \ const\n    {\n        std::vector<std::vector<T>> ret(H, std::vector<T>(W));\n\
+    \        for (int i = 0; i < H; i++)\n            std::copy(elem.begin() + i *\
+    \ W,\n                      elem.begin() + (i + 1) * W,\n                    \
+    \  std::begin(ret[i]));\n        return ret;\n    }\n    operator std::vector<std::vector<T>>()\
+    \ const { return std(); }\n    matrix() = default;\n    matrix(int H, int W) :\
+    \ H(H), W(W), elem(H * W) {}\n    matrix(const std::vector<std::vector<T>> &d)\n\
+    \        : H(d.size()), W(d.size() ? d[0].size() : 0), elem(H * W)\n    {\n  \
+    \      for (int i = 0; i < H; ++i)\n            std::copy(d[i].begin(), d[i].end(),\
     \ begin(elem) + i * W);\n    }\n\n    static matrix Identity(int N)\n    {\n \
     \       matrix ret(N, N);\n        for (int i = 0; i < N; i++)\n            ret.at(i,\
     \ i) = 1;\n        return ret;\n    }\n\n    matrix operator-() const\n    {\n\
@@ -268,7 +269,7 @@ data:
   isVerificationFile: false
   path: cplib/math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-11-02 13:44:17-05:00'
+  timestamp: '2021-11-02 13:50:33-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/matrix.hpp
