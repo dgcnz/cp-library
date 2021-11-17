@@ -41,7 +41,7 @@ struct IsPrimeSieve
 template <int SIZE>
 struct SmallestPrimeSieve
 {
-    static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
+    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> sp, v;
     SmallestPrimeSieve() : sp(SIZE, 1), v(SIZE, false)
     {
@@ -71,7 +71,7 @@ struct SmallestPrimeSieve
 template <int SIZE>
 struct LargestPrimeSieve
 {
-    static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
+    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> lp;
     LargestPrimeSieve() : lp(SIZE)
     {
@@ -94,7 +94,7 @@ struct LargestPrimeSieve
 template <int SIZE>
 struct DivisorCountSieve
 {
-    static_assert(1 <= SIZE and SIZE < 2e7, "1 <= SIZE < 2e7");
+    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> cnt;
     DivisorCountSieve() : cnt(SIZE, 0)
     {
