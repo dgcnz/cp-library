@@ -67,7 +67,7 @@ data:
       title: cplib/math/matrix.hpp
     - icon: ':warning:'
       path: cplib/math/misc.hpp
-      title: Computes the exponent of the largest power of a prime p that divides
+      title: Miscelaneous Math Functions
     - icon: ':warning:'
       path: cplib/math/modint.hpp
       title: cplib/math/modint.hpp

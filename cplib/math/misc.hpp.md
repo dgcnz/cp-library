@@ -85,8 +85,9 @@ data:
   verifiedWith: []
 documentation_of: cplib/math/misc.hpp
 layout: document
-redirect_from:
-- /library/cplib/math/misc.hpp
-- /library/cplib/math/misc.hpp.html
-title: Computes the exponent of the largest power of a prime p that divides
+title: Miscelaneous Math Functions
 ---
+
+# Miscelaneous Math Functions
+
+
