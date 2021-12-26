@@ -61,10 +61,13 @@ data:
       title: cplib/math/combinatorics.hpp
     - icon: ':warning:'
       path: cplib/math/factorize.hpp
-      title: cplib/math/factorize.hpp
+      title: Computes the prime factorization of n using smallest primes
     - icon: ':warning:'
       path: cplib/math/matrix.hpp
       title: cplib/math/matrix.hpp
+    - icon: ':warning:'
+      path: cplib/math/misc.hpp
+      title: Computes the exponent of the largest power of a prime p that divides
     - icon: ':warning:'
       path: cplib/math/modint.hpp
       title: cplib/math/modint.hpp
@@ -76,13 +79,10 @@ data:
       title: cplib/math/rational.hpp
     - icon: ':warning:'
       path: cplib/math/sieve.hpp
-      title: cplib/math/sieve.hpp
+      title: Computes the primality of integers in [0, SIZE - 1].
     - icon: ':warning:'
       path: cplib/math/static_matrix.hpp
       title: cplib/math/static_matrix.hpp
-    - icon: ':warning:'
-      path: cplib/math/utils.hpp
-      title: cplib/math/utils.hpp
   - name: cplib/string
     pages:
     - icon: ':warning:'

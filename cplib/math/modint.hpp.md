@@ -13,10 +13,10 @@ data:
     links: []
   bundledCode: "#line 1 \"cplib/math/modint.hpp\"\n\n\n\n#include <cassert>\n#include\
     \ <cplib/math/binary_exponentiation>\n#include <vector>\n\nnamespace cplib\n{\n\
-    using namespace std;\n\ntemplate <int M>\nclass ModInt\n{\n    using ll   = long\
-    \ long;\n    using mint = ModInt<M>;\n    ll x;\n\n  public:\n    static const\
+    using namespace std;\n\ntemplate <int M>\nclass modint\n{\n    using ll   = long\
+    \ long;\n    using mint = modint<M>;\n    ll x;\n\n  public:\n    static const\
     \ int           MOD = M;\n    inline static vector<mint> inverse{0, 1};\n\n  \
-    \  ModInt(ll x) : x(x) {}\n    ModInt() : x(0) {}\n    ModInt(mint const &y) :\
+    \  modint(ll x) : x(x) {}\n    modint() : x(0) {}\n    modint(mint const &y) :\
     \ x(y.val()) {}\n    explicit  operator ll() const { return val(); }\n    explicit\
     \  operator int() const { return val(); }\n    ll        val(void) const { return\
     \ mint::val(x); }\n    int       mod() const { return MOD; }\n    mint      pow(ll\
@@ -42,12 +42,12 @@ data:
     \ mint::inv(val()); }\n    static mint inv(ll x)\n    {\n        assert(x > 0);\n\
     \        if (x < ll(inverse.size()))\n            return inverse[x];\n       \
     \ return binpow(mint(x), MOD - 2);\n    }\n};\n} // namespace cplib\n\n\n"
-  code: "#ifndef CPLIB_MODINT_HPP\n#define CPLIB_MODINT_HPP\n\n#include <cassert>\n\
+  code: "#ifndef CPLIB_modint_HPP\n#define CPLIB_modint_HPP\n\n#include <cassert>\n\
     #include <cplib/math/binary_exponentiation>\n#include <vector>\n\nnamespace cplib\n\
-    {\nusing namespace std;\n\ntemplate <int M>\nclass ModInt\n{\n    using ll   =\
-    \ long long;\n    using mint = ModInt<M>;\n    ll x;\n\n  public:\n    static\
+    {\nusing namespace std;\n\ntemplate <int M>\nclass modint\n{\n    using ll   =\
+    \ long long;\n    using mint = modint<M>;\n    ll x;\n\n  public:\n    static\
     \ const int           MOD = M;\n    inline static vector<mint> inverse{0, 1};\n\
-    \n    ModInt(ll x) : x(x) {}\n    ModInt() : x(0) {}\n    ModInt(mint const &y)\
+    \n    modint(ll x) : x(x) {}\n    modint() : x(0) {}\n    modint(mint const &y)\
     \ : x(y.val()) {}\n    explicit  operator ll() const { return val(); }\n    explicit\
     \  operator int() const { return val(); }\n    ll        val(void) const { return\
     \ mint::val(x); }\n    int       mod() const { return MOD; }\n    mint      pow(ll\
@@ -73,13 +73,13 @@ data:
     \ mint::inv(val()); }\n    static mint inv(ll x)\n    {\n        assert(x > 0);\n\
     \        if (x < ll(inverse.size()))\n            return inverse[x];\n       \
     \ return binpow(mint(x), MOD - 2);\n    }\n};\n} // namespace cplib\n\n#endif\
-    \ // CPLIB_MODINT_HPP\n"
+    \ // CPLIB_modint_HPP\n"
   dependsOn:
   - cplib/math/binary_exponentiation.hpp
   isVerificationFile: false
   path: cplib/math/modint.hpp
   requiredBy: []
-  timestamp: '2021-09-28 13:06:15-05:00'
+  timestamp: '2021-12-25 20:18:09-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/modint.hpp
