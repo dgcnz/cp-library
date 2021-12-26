@@ -9,12 +9,14 @@ namespace cplib
 {
 using namespace std;
 
+/*
+ * @brief Computes the primality of integers in [0, SIZE - 1].
+ * @tparam SIZE Size of sieve.
+ */
 template <int SIZE>
 struct IsPrimeSieve
 {
-    static_assert(0 <= SIZE and SIZE < 1e8, "0 <= SIZE < 1e8");
     bitset<SIZE> is_prime;
-    vector<int>  primes;
 
     IsPrimeSieve()
     {
@@ -28,7 +30,7 @@ struct IsPrimeSieve
                     is_prime[j] = 0;
     }
 
-    vector<int> get_primes() const
+    vector<int> primes() const
     {
         vector<int> p;
         for (int i = 2; i < SIZE; ++i)
@@ -38,10 +40,13 @@ struct IsPrimeSieve
     }
 };
 
+/*
+ * @brief Computes the smallest prime divisor of integers in [0, SIZE - 1].
+ * @tparam SIZE Size of sieve.
+ */
 template <int SIZE>
 struct SmallestPrimeSieve
 {
-    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> sp, v;
     SmallestPrimeSieve() : sp(SIZE, 1), v(SIZE, false)
     {
@@ -58,7 +63,7 @@ struct SmallestPrimeSieve
             }
         }
     }
-    vector<int> get_primes() const
+    vector<int> primes() const
     {
         vector<int> p;
         for (int x = 2; x < SIZE; ++x)
@@ -68,10 +73,13 @@ struct SmallestPrimeSieve
     }
 };
 
+/*
+ * @brief Computes the largest prime divisor of integers in [0, SIZE - 1].
+ * @tparam SIZE Size of sieve.
+ */
 template <int SIZE>
 struct LargestPrimeSieve
 {
-    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> lp;
     LargestPrimeSieve() : lp(SIZE)
     {
@@ -81,7 +89,7 @@ struct LargestPrimeSieve
                 for (int j = i; j < SIZE; j += i)
                     lp[j] = i;
     }
-    vector<int> get_primes() const
+    vector<int> primes() const
     {
         vector<int> p;
         for (int x = 2; x < SIZE; ++x)
@@ -91,16 +99,60 @@ struct LargestPrimeSieve
     }
 };
 
+/*
+ * @brief Computes the number of divisors of integers in [0, SIZE - 1].
+ * @tparam SIZE Size of sieve.
+ */
 template <int SIZE>
 struct DivisorCountSieve
 {
-    static_assert(1 <= SIZE and SIZE < 1e8, "1 <= SIZE < 1e8");
     vector<int> cnt;
     DivisorCountSieve() : cnt(SIZE, 0)
     {
-        for (int i = 1; i <= SIZE; i++)
+        for (int i = 1; i < SIZE; i++)
             for (int j = i; j < SIZE; j += i)
                 cnt[j]++;
+    }
+};
+
+/*
+ * @brief Computes the Euler phi function for integers in [0, SIZE - 1]. phi[n]
+ * is the count of positive numbers coprime to n in [1, n].
+ * @tparam SIZE Size of sieve.
+ */
+template <int SIZE>
+struct EulerTotientSieve
+{
+    vector<int> phi;
+    EulerTotientSieve() : phi(SIZE, 0)
+    {
+        phi[0] = 0;
+        phi[1] = 1;
+        for (int i = 2; i < SIZE; i++)
+            phi[i] = i;
+
+        for (int i = 2; i < SIZE; i++)
+        {
+            if (phi[i] == i)
+                for (int j = i; j < SIZE; j += i)
+                    phi[j] -= phi[j] / i;
+        }
+    }
+};
+
+/*
+ * @brief Computes the sum of positive divisors for integers in [0, SIZE - 1].
+ * @tparam SIZE Size of sieve.
+ */
+template <int SIZE>
+struct SumDivisorSieve
+{
+    vector<long long> sd;
+    SumDivisorSieve() : sd(SIZE, 0)
+    {
+        for (int i = 1; i < SIZE; ++i)
+            for (int j = i; j < SIZE; j += i)
+                sd[j] += i;
     }
 };
 

@@ -1,5 +1,5 @@
-#ifndef CPLIB_MODINT_HPP
-#define CPLIB_MODINT_HPP
+#ifndef CPLIB_modint_HPP
+#define CPLIB_modint_HPP
 
 #include <cassert>
 #include <cplib/math/binary_exponentiation>
@@ -10,19 +10,19 @@ namespace cplib
 using namespace std;
 
 template <int M>
-class ModInt
+class modint
 {
     using ll   = long long;
-    using mint = ModInt<M>;
+    using mint = modint<M>;
     ll x;
 
   public:
     static const int           MOD = M;
     inline static vector<mint> inverse{0, 1};
 
-    ModInt(ll x) : x(x) {}
-    ModInt() : x(0) {}
-    ModInt(mint const &y) : x(y.val()) {}
+    modint(ll x) : x(x) {}
+    modint() : x(0) {}
+    modint(mint const &y) : x(y.val()) {}
     explicit  operator ll() const { return val(); }
     explicit  operator int() const { return val(); }
     ll        val(void) const { return mint::val(x); }
@@ -74,4 +74,4 @@ class ModInt
 };
 } // namespace cplib
 
-#endif // CPLIB_MODINT_HPP
+#endif // CPLIB_modint_HPP

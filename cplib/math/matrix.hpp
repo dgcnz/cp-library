@@ -1,7 +1,8 @@
 #ifndef CPLIB_MATRIX_HPP
 #define CPLIB_MATRIX_HPP
 
-// source: https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp
+// source:
+// https://hitonanode.github.io/cplib-cpp/linear_algebra_matrix/matrix.hpp
 
 #include <algorithm>
 #include <cassert>
@@ -10,6 +11,9 @@
 #include <iterator>
 #include <type_traits>
 #include <vector>
+
+namespace cplib
+{
 
 template <typename T>
 struct matrix
@@ -331,5 +335,6 @@ T Fibonacci(long long int k, int a = 1, int b = 1)
     mat[1][1] = a;
     return mat.pow(k + 1)[0][1];
 }
+} // namespace cplib
 
 #endif // CPLIB_MATRIX_HPP

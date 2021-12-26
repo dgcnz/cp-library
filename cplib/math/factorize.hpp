@@ -9,35 +9,66 @@ namespace cplib
 {
 using namespace std;
 
-namespace smallest_prime
-{
-vector<pair<int, int>> factorize(vector<int> const &sp, int x)
+/*
+ * @brief Computes the prime factorization of n using smallest primes
+ * @tparam Integral type
+ * @param sp Smallest Prime vector
+ * @param n Number to be factorized
+ */
+template <typename T>
+vector<pair<T, int>> smallest_prime_factorize(vector<int> const &sp, T n)
 {
     /*
      * Prime factorization in O(log n) using smallest prime array
      */
-    assert(0 <= x and x < (int)sp.size());
-    vector<pair<int, int>> factors;
-    while (x > 1)
+    assert(0 <= n and n < (int)sp.size());
+    vector<pair<T, int>> factors;
+    while (n > 1)
     {
-        int y = sp[x], e = 0;
-        while (x % y == 0)
-            e++, x /= y;
+        int y = sp[n], e = 0;
+        while (n % y == 0)
+            e++, n /= y;
         if (e > 0)
             factors.emplace_back(y, e);
     }
     return factors;
 }
-} // namespace smallest_prime
 
-namespace prime
+/*
+ * @brief Computes the integer factorization of n.
+ * @tparam Integral type
+ * @param n Number to be factorized
+ */
+template <typename T>
+vector<T> factorize(T n)
 {
-vector<pair<long long, int>> factorize(vector<int> const &primes, long long n)
+    vector<T> factors;
+    for (long long x = 1; x * x <= n; ++x)
+    {
+        if (n % x == 0)
+        {
+            long long y = n / x;
+            factors.push_back(x);
+            if (x != y)
+                factors.push_back(y);
+        }
+    }
+    return factors;
+}
+
+/*
+ * @brief Computes the prime factorization of n using list of primes
+ * @tparam Integral type
+ * @param primes List of primes
+ * @param n Number to be factorized
+ */
+template <typename T>
+vector<pair<T, int>> prime_factorize(vector<int> const &primes, T n)
 {
     /*
      * Prime factorization in O(sqrt n) using array of primes
      */
-    vector<pair<long long, int>> factors;
+    vector<pair<T, int>> factors;
     for (long long p : primes)
     {
         int e = 0;
@@ -52,7 +83,6 @@ vector<pair<long long, int>> factorize(vector<int> const &primes, long long n)
         factors.emplace_back(n, 1);
     return factors;
 }
-} // namespace prime
 
 }; // namespace cplib
 
