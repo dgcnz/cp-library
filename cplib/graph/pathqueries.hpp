@@ -49,6 +49,8 @@ struct PathQueries
         ans     = op(ans, x[l]);
         return ans;
     }
+
+    S query(int u) const { return dp[u]; }
 };
 } // namespace cplib
 

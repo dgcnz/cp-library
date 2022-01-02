@@ -2,6 +2,7 @@
 #define CPLIB_STRING_UTILS_HPP
 
 #include <string>
+#include <vector>
 
 namespace cplib
 {
@@ -53,6 +54,26 @@ string next(string s)
     return s;
 }
 }; // namespace lexicographical
+
+/*
+ * @brief Checks if vector is a palindromic sequence
+ * @param a vector to be checked for
+ */
+template <typename T>
+bool is_palindrome(vector<T> const &a)
+{
+    return a == vector<T>(a.rbegin(), a.rend());
+}
+
+/*
+ * @brief Checks if string is a palindromic sequence
+ * @param a string to be checked for
+ */
+bool is_palindrome(string const &a)
+{
+    return a == string(a.rbegin(), a.rend());
+}
+
 }; // namespace cplib
 
 #endif // CPLIB_STRING_UTILS_HPP

@@ -136,6 +136,7 @@ template <typename InputIt,
 vector<T>
 apply_permutation(InputIt first, InputIt last, vector<int> const &sigma)
 {
+    // TODO: deal with strings
     int n = distance(first, last);
     assert(n == (int)sigma.size());
     vector<T> a_sigma(n);
@@ -163,6 +164,14 @@ map<T, int> compress(vector<T> values)
     for (auto &[k, v] : mp)
         v = cnt++;
     return mp;
+}
+
+template <typename T>
+vector<T> apply_map(vector<T> values, map<T, T> m)
+{
+    for (auto &x : values)
+        x = m[x];
+    return values;
 }
 
 } // namespace cplib

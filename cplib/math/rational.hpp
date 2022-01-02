@@ -6,6 +6,10 @@
 // source: https://hitonanode.github.io/cplib-cpp/rational/rational_number.hpp
 
 // rational number + {infinity(1 / 0), -infinity(-1 / 0)}
+//
+namespace cplib
+{
+using namespace std;
 template <typename T = long long int>
 struct rational
 {
@@ -78,5 +82,6 @@ struct rational
         return os << x.num << '/' << x.den;
     }
 };
+} // namespace cplib
 
 #endif // CPLIB_RATIONAL_HPP

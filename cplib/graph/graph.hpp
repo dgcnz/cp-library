@@ -86,6 +86,8 @@ struct Graph<void>
     typename vector<adj_list>::const_iterator end() const { return g.end(); }
 };
 
+using UndirectedGraph = Graph<void>;
+
 } // namespace cplib
 
 #endif // CPLIB_GRAPH_HPP
