@@ -15,6 +15,9 @@ data:
     - icon: ':warning:'
       path: cplib/data_structure/ordered_set.hpp
       title: cplib/data_structure/ordered_set.hpp
+    - icon: ':warning:'
+      path: cplib/data_structure/persistent_segtree.hpp
+      title: cplib/data_structure/persistent_segtree.hpp
   - name: cplib/divide_conquer
     pages:
     - icon: ':warning:'
@@ -51,6 +54,12 @@ data:
     - icon: ':warning:'
       path: cplib/graph/pathqueries.hpp
       title: cplib/graph/pathqueries.hpp
+    - icon: ':warning:'
+      path: cplib/graph/spfa.hpp
+      title: cplib/graph/spfa.hpp
+    - icon: ':warning:'
+      path: cplib/graph/toposort.hpp
+      title: Computes one iteration of the dfs in a topological sorting.
   - name: cplib/math
     pages:
     - icon: ':warning:'
@@ -93,7 +102,7 @@ data:
       title: cplib/string/prefix_function.hpp
     - icon: ':warning:'
       path: cplib/string/utils.hpp
-      title: cplib/string/utils.hpp
+      title: Checks if vector is a palindromic sequence
     - icon: ':warning:'
       path: cplib/string/z_function.hpp
       title: cplib/string/z_function.hpp

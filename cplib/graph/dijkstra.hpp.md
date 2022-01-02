@@ -39,12 +39,12 @@ data:
     \ vector<adj_list>::iterator begin() { return g.begin(); };\n    typename vector<adj_list>::iterator\
     \ end() { return g.end(); }\n\n    typename vector<adj_list>::const_iterator begin()\
     \ const\n    {\n        return g.begin();\n    };\n    typename vector<adj_list>::const_iterator\
-    \ end() const { return g.end(); }\n};\n\n} // namespace cplib\n\n\n#line 6 \"\
-    cplib/graph/dijkstra.hpp\"\n#include <cmath>\n#include <limits>\n#include <set>\n\
-    #line 11 \"cplib/graph/dijkstra.hpp\"\n\nnamespace cplib\n{\nusing namespace std;\n\
-    \ntemplate <typename W, W INF = numeric_limits<W>::max()>\nstruct Dijkstra\n{\n\
-    \    Graph<W> const &g;\n    int             src;\n    vector<int>     p;\n  \
-    \  vector<W>       d;\n\n    Dijkstra(Graph<W> const &g) : g(g), p(g.size()),\
+    \ end() const { return g.end(); }\n};\n\nusing UndirectedGraph = Graph<void>;\n\
+    \n} // namespace cplib\n\n\n#line 6 \"cplib/graph/dijkstra.hpp\"\n#include <cmath>\n\
+    #include <limits>\n#include <set>\n#line 11 \"cplib/graph/dijkstra.hpp\"\n\nnamespace\
+    \ cplib\n{\nusing namespace std;\n\ntemplate <typename W, W INF = numeric_limits<W>::max()>\n\
+    struct Dijkstra\n{\n    Graph<W> const &g;\n    int             src;\n    vector<int>\
+    \     p;\n    vector<W>       d;\n\n    Dijkstra(Graph<W> const &g) : g(g), p(g.size()),\
     \ d(g.size()){};\n    void run(int src = 0)\n    {\n        this->src = src;\n\
     \        fill(begin(p), end(p), -1);\n        fill(begin(d), end(d), INF);\n\n\
     \        set<pair<W, int>> q;\n        d[src] = 0;\n        q.emplace(d[src],\
@@ -112,7 +112,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-11-02 13:46:49-05:00'
+  timestamp: '2022-01-02 13:06:06-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/dijkstra.hpp

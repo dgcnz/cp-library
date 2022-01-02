@@ -59,15 +59,17 @@ data:
     \ j;\n                  return cmp(a, b);\n              });\n    return indices;\n\
     }\n\ntemplate <typename InputIt,\n          typename T = typename iterator_traits<InputIt>::value_type>\n\
     vector<T>\napply_permutation(InputIt first, InputIt last, vector<int> const &sigma)\n\
-    {\n    int n = distance(first, last);\n    assert(n == (int)sigma.size());\n \
-    \   vector<T> a_sigma(n);\n    for (int i = 0; i < n; ++i)\n        a_sigma[i]\
-    \ = *(first + sigma[i]);\n    return a_sigma;\n}\n\nvector<int> inverse_permutation(vector<int>\
-    \ const &sigma)\n{\n    int         n = sigma.size();\n    vector<int> inv(n);\n\
-    \    for (int i = 0; i < n; ++i)\n        inv[sigma[i]] = i;\n    return inv;\n\
-    }\n\ntemplate <typename T>\nmap<T, int> compress(vector<T> values)\n{\n    map<T,\
-    \ int> mp;\n    int         cnt = 0;\n    for (auto v : values)\n        mp[v];\n\
-    \    for (auto &[k, v] : mp)\n        v = cnt++;\n    return mp;\n}\n\n} // namespace\
-    \ cplib\n\n\n"
+    {\n    // TODO: deal with strings\n    int n = distance(first, last);\n    assert(n\
+    \ == (int)sigma.size());\n    vector<T> a_sigma(n);\n    for (int i = 0; i < n;\
+    \ ++i)\n        a_sigma[i] = *(first + sigma[i]);\n    return a_sigma;\n}\n\n\
+    vector<int> inverse_permutation(vector<int> const &sigma)\n{\n    int        \
+    \ n = sigma.size();\n    vector<int> inv(n);\n    for (int i = 0; i < n; ++i)\n\
+    \        inv[sigma[i]] = i;\n    return inv;\n}\n\ntemplate <typename T>\nmap<T,\
+    \ int> compress(vector<T> values)\n{\n    map<T, int> mp;\n    int         cnt\
+    \ = 0;\n    for (auto v : values)\n        mp[v];\n    for (auto &[k, v] : mp)\n\
+    \        v = cnt++;\n    return mp;\n}\n\ntemplate <typename T>\nvector<T> apply_map(vector<T>\
+    \ values, map<T, T> m)\n{\n    for (auto &x : values)\n        x = m[x];\n   \
+    \ return values;\n}\n\n} // namespace cplib\n\n\n"
   code: "#ifndef CPLIB_UTILS_MISC_HPP\n#define CPLIB_UTILS_MISC_HPP\n\n#include <algorithm>\n\
     #include <cassert>\n#include <functional>\n#include <map>\n#include <numeric>\n\
     #include <vector>\n\nnamespace cplib\n{\nusing namespace std;\n\ntemplate <class\
@@ -116,21 +118,23 @@ data:
     \ j;\n                  return cmp(a, b);\n              });\n    return indices;\n\
     }\n\ntemplate <typename InputIt,\n          typename T = typename iterator_traits<InputIt>::value_type>\n\
     vector<T>\napply_permutation(InputIt first, InputIt last, vector<int> const &sigma)\n\
-    {\n    int n = distance(first, last);\n    assert(n == (int)sigma.size());\n \
-    \   vector<T> a_sigma(n);\n    for (int i = 0; i < n; ++i)\n        a_sigma[i]\
-    \ = *(first + sigma[i]);\n    return a_sigma;\n}\n\nvector<int> inverse_permutation(vector<int>\
-    \ const &sigma)\n{\n    int         n = sigma.size();\n    vector<int> inv(n);\n\
-    \    for (int i = 0; i < n; ++i)\n        inv[sigma[i]] = i;\n    return inv;\n\
-    }\n\ntemplate <typename T>\nmap<T, int> compress(vector<T> values)\n{\n    map<T,\
-    \ int> mp;\n    int         cnt = 0;\n    for (auto v : values)\n        mp[v];\n\
-    \    for (auto &[k, v] : mp)\n        v = cnt++;\n    return mp;\n}\n\n} // namespace\
-    \ cplib\n\n#endif // CPLIB_UTILS_MISC_HPP\n"
+    {\n    // TODO: deal with strings\n    int n = distance(first, last);\n    assert(n\
+    \ == (int)sigma.size());\n    vector<T> a_sigma(n);\n    for (int i = 0; i < n;\
+    \ ++i)\n        a_sigma[i] = *(first + sigma[i]);\n    return a_sigma;\n}\n\n\
+    vector<int> inverse_permutation(vector<int> const &sigma)\n{\n    int        \
+    \ n = sigma.size();\n    vector<int> inv(n);\n    for (int i = 0; i < n; ++i)\n\
+    \        inv[sigma[i]] = i;\n    return inv;\n}\n\ntemplate <typename T>\nmap<T,\
+    \ int> compress(vector<T> values)\n{\n    map<T, int> mp;\n    int         cnt\
+    \ = 0;\n    for (auto v : values)\n        mp[v];\n    for (auto &[k, v] : mp)\n\
+    \        v = cnt++;\n    return mp;\n}\n\ntemplate <typename T>\nvector<T> apply_map(vector<T>\
+    \ values, map<T, T> m)\n{\n    for (auto &x : values)\n        x = m[x];\n   \
+    \ return values;\n}\n\n} // namespace cplib\n\n#endif // CPLIB_UTILS_MISC_HPP\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/misc.hpp
   requiredBy:
   - cplib/math/pfint.hpp
-  timestamp: '2021-11-02 13:45:41-05:00'
+  timestamp: '2022-01-02 13:06:06-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/utils/misc.hpp

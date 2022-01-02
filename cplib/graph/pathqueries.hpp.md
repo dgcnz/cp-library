@@ -29,7 +29,8 @@ data:
     \    {\n        int l   = lca(u, v);\n        S   ans = e();\n        ans    \
     \ = op(ans, dp[u]);\n        ans     = op(ans, dp[v]);\n        ans     = op(ans,\
     \ inv(dp[l]));\n        ans     = op(ans, inv(dp[l]));\n        ans     = op(ans,\
-    \ x[l]);\n        return ans;\n    }\n};\n} // namespace cplib\n\n\n"
+    \ x[l]);\n        return ans;\n    }\n\n    S query(int u) const { return dp[u];\
+    \ }\n};\n} // namespace cplib\n\n\n"
   code: "#ifndef CPLIB_PATHQUERIES_HPP\n#define CPLIB_PATHQUERIES_HPP\n\n#include\
     \ <cplib/graph/graph>\n#include <cplib/graph/lca>\n#include <functional>\n#include\
     \ <vector>\n\nnamespace cplib\n{\nusing namespace std;\n\ntemplate <typename W,\
@@ -46,14 +47,15 @@ data:
     \ l   = lca(u, v);\n        S   ans = e();\n        ans     = op(ans, dp[u]);\n\
     \        ans     = op(ans, dp[v]);\n        ans     = op(ans, inv(dp[l]));\n \
     \       ans     = op(ans, inv(dp[l]));\n        ans     = op(ans, x[l]);\n   \
-    \     return ans;\n    }\n};\n} // namespace cplib\n\n#endif // CPLIB_PATHQUERIES_HPP\n"
+    \     return ans;\n    }\n\n    S query(int u) const { return dp[u]; }\n};\n}\
+    \ // namespace cplib\n\n#endif // CPLIB_PATHQUERIES_HPP\n"
   dependsOn:
   - cplib/graph/graph.hpp
   - cplib/graph/lca.hpp
   isVerificationFile: false
   path: cplib/graph/pathqueries.hpp
   requiredBy: []
-  timestamp: '2021-10-21 16:39:26-05:00'
+  timestamp: '2022-01-02 13:06:06-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/pathqueries.hpp

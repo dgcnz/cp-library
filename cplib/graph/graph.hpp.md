@@ -20,6 +20,12 @@ data:
   - icon: ':warning:'
     path: cplib/graph/pathqueries.hpp
     title: cplib/graph/pathqueries.hpp
+  - icon: ':warning:'
+    path: cplib/graph/spfa.hpp
+    title: cplib/graph/spfa.hpp
+  - icon: ':warning:'
+    path: cplib/graph/toposort.hpp
+    title: Computes one iteration of the dfs in a topological sorting.
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -54,7 +60,8 @@ data:
     \ begin() { return g.begin(); };\n    typename vector<adj_list>::iterator end()\
     \ { return g.end(); }\n\n    typename vector<adj_list>::const_iterator begin()\
     \ const\n    {\n        return g.begin();\n    };\n    typename vector<adj_list>::const_iterator\
-    \ end() const { return g.end(); }\n};\n\n} // namespace cplib\n\n\n"
+    \ end() const { return g.end(); }\n};\n\nusing UndirectedGraph = Graph<void>;\n\
+    \n} // namespace cplib\n\n\n"
   code: "#ifndef CPLIB_GRAPH_HPP\n#define CPLIB_GRAPH_HPP\n\n#include <algorithm>\n\
     #include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace cplib\n\
     {\nusing namespace std;\n\ntemplate <typename W>\nstruct Graph\n{\n    using adj_list\
@@ -83,7 +90,8 @@ data:
     \ begin() { return g.begin(); };\n    typename vector<adj_list>::iterator end()\
     \ { return g.end(); }\n\n    typename vector<adj_list>::const_iterator begin()\
     \ const\n    {\n        return g.begin();\n    };\n    typename vector<adj_list>::const_iterator\
-    \ end() const { return g.end(); }\n};\n\n} // namespace cplib\n\n#endif // CPLIB_GRAPH_HPP\n"
+    \ end() const { return g.end(); }\n};\n\nusing UndirectedGraph = Graph<void>;\n\
+    \n} // namespace cplib\n\n#endif // CPLIB_GRAPH_HPP\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/graph/graph.hpp
@@ -91,10 +99,12 @@ data:
   - cplib/graph/blockcut.hpp
   - cplib/graph/lca.hpp
   - cplib/graph/dijkstra.hpp
+  - cplib/graph/spfa.hpp
+  - cplib/graph/toposort.hpp
   - cplib/graph/pathqueries.hpp
   - cplib/graph/bfs01.hpp
   - cplib/graph/gridgraph.hpp
-  timestamp: '2021-10-21 16:39:26-05:00'
+  timestamp: '2022-01-02 13:06:06-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/graph.hpp
