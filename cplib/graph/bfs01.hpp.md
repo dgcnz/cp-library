@@ -13,19 +13,20 @@ data:
     links: []
   bundledCode: "#line 1 \"cplib/graph/bfs01.hpp\"\n\n\n\n#include <algorithm>\n#include\
     \ <cplib/graph/graph>\n#include <deque>\n#include <limits>\n#include <vector>\n\
-    \nnamespace cplib\n{\nusing namespace std;\ntemplate <template <typename> class\
-    \ G,\n          typename W,\n          W INF = numeric_limits<W>::max()>\nstruct\
-    \ BFS01\n{\n    G<W> const &g;\n    int         src;\n    vector<int> p;\n   \
-    \ vector<W>   d;\n    BFS01(G<W> const &g) : g(g), p(g.size()), d(g.size()){};\n\
-    \    void run(int src = 0)\n    {\n        this->src = src;\n        fill(begin(p),\
-    \ end(p), -1);\n        fill(begin(d), end(d), INF);\n\n        deque<int> q;\n\
-    \        d[src] = 0;\n        q.push_front(src);\n        while (!q.empty())\n\
-    \        {\n            int u = q.front();\n            q.pop_front();\n\n   \
-    \         for (auto [v, w] : g[u])\n            {\n                if (d[u] +\
-    \ w < d[v])\n                {\n                    d[v] = d[u] + w;\n       \
-    \             p[v] = u;\n                    if (w == 1)\n                   \
-    \     q.push_back(v);\n                    else\n                        q.push_front(v);\n\
-    \                }\n            }\n        }\n    }\n    Graph<W> shortest_path_DAG(void)\
+    \nnamespace cplib\n{\nusing namespace std;\ntemplate <typename W,\n          W\
+    \ INF                             = numeric_limits<W>::max(),\n          template\
+    \ <typename> class graph_t = Graph>\nstruct BFS01\n{\n    graph_t<W> const &g;\n\
+    \    int               src;\n    vector<int>       p;\n    vector<W>         d;\n\
+    \    BFS01(graph_t<W> const &g) : g(g), p(g.size()), d(g.size()){};\n    void\
+    \ run(int src = 0)\n    {\n        this->src = src;\n        fill(begin(p), end(p),\
+    \ -1);\n        fill(begin(d), end(d), INF);\n\n        deque<int> q;\n      \
+    \  d[src] = 0;\n        q.push_front(src);\n        while (!q.empty())\n     \
+    \   {\n            int u = q.front();\n            q.pop_front();\n\n        \
+    \    for (auto [v, w] : g[u])\n            {\n                if (d[u] + w < d[v])\n\
+    \                {\n                    d[v] = d[u] + w;\n                   \
+    \ p[v] = u;\n                    if (w == 1)\n                        q.push_back(v);\n\
+    \                    else\n                        q.push_front(v);\n        \
+    \        }\n            }\n        }\n    }\n    Graph<W> shortest_path_DAG(void)\
     \ const\n    {\n        int      n = g.size();\n        Graph<W> dag(n);\n   \
     \     for (int v = 0; v < n; ++v)\n            if (auto u = p[v]; u != -1)\n \
     \               dag.add_edge(u, v, d[v] - d[u]);\n        return dag;\n    }\n\
@@ -38,19 +39,20 @@ data:
     \ cplib\n\n\n"
   code: "#ifndef CPLIB_BFS01_HPP\n#define CPLIB_BFS01_HPP\n\n#include <algorithm>\n\
     #include <cplib/graph/graph>\n#include <deque>\n#include <limits>\n#include <vector>\n\
-    \nnamespace cplib\n{\nusing namespace std;\ntemplate <template <typename> class\
-    \ G,\n          typename W,\n          W INF = numeric_limits<W>::max()>\nstruct\
-    \ BFS01\n{\n    G<W> const &g;\n    int         src;\n    vector<int> p;\n   \
-    \ vector<W>   d;\n    BFS01(G<W> const &g) : g(g), p(g.size()), d(g.size()){};\n\
-    \    void run(int src = 0)\n    {\n        this->src = src;\n        fill(begin(p),\
-    \ end(p), -1);\n        fill(begin(d), end(d), INF);\n\n        deque<int> q;\n\
-    \        d[src] = 0;\n        q.push_front(src);\n        while (!q.empty())\n\
-    \        {\n            int u = q.front();\n            q.pop_front();\n\n   \
-    \         for (auto [v, w] : g[u])\n            {\n                if (d[u] +\
-    \ w < d[v])\n                {\n                    d[v] = d[u] + w;\n       \
-    \             p[v] = u;\n                    if (w == 1)\n                   \
-    \     q.push_back(v);\n                    else\n                        q.push_front(v);\n\
-    \                }\n            }\n        }\n    }\n    Graph<W> shortest_path_DAG(void)\
+    \nnamespace cplib\n{\nusing namespace std;\ntemplate <typename W,\n          W\
+    \ INF                             = numeric_limits<W>::max(),\n          template\
+    \ <typename> class graph_t = Graph>\nstruct BFS01\n{\n    graph_t<W> const &g;\n\
+    \    int               src;\n    vector<int>       p;\n    vector<W>         d;\n\
+    \    BFS01(graph_t<W> const &g) : g(g), p(g.size()), d(g.size()){};\n    void\
+    \ run(int src = 0)\n    {\n        this->src = src;\n        fill(begin(p), end(p),\
+    \ -1);\n        fill(begin(d), end(d), INF);\n\n        deque<int> q;\n      \
+    \  d[src] = 0;\n        q.push_front(src);\n        while (!q.empty())\n     \
+    \   {\n            int u = q.front();\n            q.pop_front();\n\n        \
+    \    for (auto [v, w] : g[u])\n            {\n                if (d[u] + w < d[v])\n\
+    \                {\n                    d[v] = d[u] + w;\n                   \
+    \ p[v] = u;\n                    if (w == 1)\n                        q.push_back(v);\n\
+    \                    else\n                        q.push_front(v);\n        \
+    \        }\n            }\n        }\n    }\n    Graph<W> shortest_path_DAG(void)\
     \ const\n    {\n        int      n = g.size();\n        Graph<W> dag(n);\n   \
     \     for (int v = 0; v < n; ++v)\n            if (auto u = p[v]; u != -1)\n \
     \               dag.add_edge(u, v, d[v] - d[u]);\n        return dag;\n    }\n\
@@ -66,7 +68,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/bfs01.hpp
   requiredBy: []
-  timestamp: '2022-01-02 13:06:06-05:00'
+  timestamp: '2022-01-25 16:37:41-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/bfs01.hpp

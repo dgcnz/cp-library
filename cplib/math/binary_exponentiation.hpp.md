@@ -27,8 +27,8 @@ data:
   isVerificationFile: false
   path: cplib/math/binary_exponentiation.hpp
   requiredBy:
-  - cplib/math/pfint.hpp
   - cplib/math/modint.hpp
+  - cplib/math/pfint.hpp
   timestamp: '2020-12-17 19:42:35-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

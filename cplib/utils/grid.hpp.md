@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/graph/gridgraph.hpp
+    title: cplib/graph/gridgraph.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -47,7 +50,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/grid.hpp
-  requiredBy: []
+  requiredBy:
+  - cplib/graph/gridgraph.hpp
   timestamp: '2021-09-28 10:47:46-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

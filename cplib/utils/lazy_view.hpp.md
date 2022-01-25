@@ -4,10 +4,7 @@ data:
   - icon: ':warning:'
     path: cplib/utils/lazy_state.hpp
     title: cplib/utils/lazy_state.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: cplib/graph/gridgraph.hpp
-    title: cplib/graph/gridgraph.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -54,8 +51,7 @@ data:
   - cplib/utils/lazy_state.hpp
   isVerificationFile: false
   path: cplib/utils/lazy_view.hpp
-  requiredBy:
-  - cplib/graph/gridgraph.hpp
+  requiredBy: []
   timestamp: '2021-06-24 17:56:08-05:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
