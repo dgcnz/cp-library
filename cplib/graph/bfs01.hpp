@@ -10,14 +10,16 @@
 namespace cplib
 {
 using namespace std;
-template <typename W, W INF = numeric_limits<W>::max()>
+template <typename W,
+          W INF                             = numeric_limits<W>::max(),
+          template <typename> class graph_t = Graph>
 struct BFS01
 {
-    Graph<W> const &g;
-    int             src;
-    vector<int>     p;
-    vector<W>       d;
-    BFS01(Graph<W> const &g) : g(g), p(g.size()), d(g.size()){};
+    graph_t<W> const &g;
+    int               src;
+    vector<int>       p;
+    vector<W>         d;
+    BFS01(graph_t<W> const &g) : g(g), p(g.size()), d(g.size()){};
     void run(int src = 0)
     {
         this->src = src;
